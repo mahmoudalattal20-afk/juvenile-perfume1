@@ -273,7 +273,7 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
         id="inspired-showcase"
         className={styles.section}
         dir={direction}
-        aria-label={isAr ? "عطور أيقونية بتوقيع جيفونيل" : "Iconic Fragrances. The JUVENILE Signature."}
+        aria-label={isAr ? "عطور أيقونية بتوقيع جيفونيل" : "ICONIC SCENTS. THE JUVENILE SIGNATURE."}
       >
         <div className={styles.container}>
           {/* Header */}
@@ -282,7 +282,15 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
               className={styles.title}
               style={isAr ? { fontFamily: "var(--font-readex), 'Readex Pro', sans-serif" } : undefined}
             >
-              {isAr ? "عطور أيقونية بتوقيع جيفونيل" : "Iconic Fragrances. The JUVENILE Signature."}
+              {isAr ? (
+                "عطور أيقونية بتوقيع جيفونيل"
+              ) : (
+                <>
+                  ICONIC SCENTS.
+                  <br />
+                  THE JUVENILE SIGNATURE.
+                </>
+              )}
             </h2>
             <p
               className={styles.subtitle}
@@ -290,7 +298,7 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
             >
               {isAr
                 ? "اكتشف عطور جيفونيل المستوحاة من أشهر العطور العالمية بثبات يصل إلى 24 ساعة."
-                : "Discover JUVENILE fragrances inspired by some of the world’s most iconic scents, with lasting performance for up to 24 hours."}
+                : "Inspired by global icons. Made to last up to 24 hours."}
             </p>
           </div>
 
@@ -471,16 +479,16 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
                           onClick={(e) => handleSizeSelect(item.id, "50ml", e)}
                           className={`${styles.sizeBtn} ${currentSize === "50ml" ? styles.sizeBtnActive : ""}`}
                         >
-                          <span>{isAr ? "50 مل" : "50ml"}</span>
-                          <span>({price50} {isAr ? "ج.م" : "LE"})</span>
+                          <span className={styles.sizeVol}>{isAr ? "50 مل" : "50ml"}</span>
+                          <span className={styles.sizePrice}>({price50} {isAr ? "ج.م" : "LE"})</span>
                         </button>
                         <button
                           type="button"
                           onClick={(e) => handleSizeSelect(item.id, "100ml", e)}
                           className={`${styles.sizeBtn} ${currentSize === "100ml" ? styles.sizeBtnActive : ""}`}
                         >
-                          <span>{isAr ? "100 مل" : "100ml"}</span>
-                          <span>({price100} {isAr ? "ج.م" : "LE"})</span>
+                          <span className={styles.sizeVol}>{isAr ? "100 مل" : "100ml"}</span>
+                          <span className={styles.sizePrice}>({price100} {isAr ? "ج.م" : "LE"})</span>
                         </button>
                       </div>
 

@@ -431,6 +431,16 @@
   user-select: none;
 }
 
+.sizeVol {
+  white-space: nowrap;
+}
+
+.sizePrice {
+  white-space: nowrap;
+  font-size: 0.92em;
+  opacity: 0.9;
+}
+
 .sizeBtn:active {
   transform: scale(0.95);
 }
@@ -472,6 +482,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-shrink: 0;
+  min-width: max-content;
 }
 
 :global([dir="rtl"]) .priceCol {
@@ -506,6 +518,7 @@
   font-weight: 700;
   color: #000000;
   display: inline-block;
+  white-space: nowrap;
 }
 
 /* Rolling Luxury Add To Cart Button */
@@ -776,18 +789,44 @@
 
   .sizeSwitcher {
     margin-bottom: 8px;
-    gap: 2px;
-    padding: 2px;
+    gap: 3px;
+    padding: 3px;
+    border-radius: 12px;
   }
 
   .sizeBtn {
-    padding: 3px 2px;
-    font-size: 10px;
+    flex-direction: column;
+    padding: 4px 2px;
+    border-radius: 9px;
+    gap: 1px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .sizeVol {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .sizePrice {
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 1.1;
+    white-space: nowrap;
+    opacity: 0.8;
   }
 
   .actionRow {
     padding-top: 8px;
     gap: 6px;
+    align-items: center;
+  }
+
+  .priceCol {
+    flex-shrink: 0;
+    min-width: max-content;
   }
 
   .priceLabel {
@@ -796,13 +835,18 @@
 
   .currentPrice {
     font-size: 13.5px;
+    white-space: nowrap;
+    display: block;
+    line-height: 1.2;
   }
 
   .addToCartBtn {
     height: 34px;
-    padding: 0 12px;
+    padding: 0 10px;
     font-size: 11px;
     border-radius: 9999px;
+    flex-shrink: 1;
+    min-width: 0;
   }
 
   .rollingContainer {
