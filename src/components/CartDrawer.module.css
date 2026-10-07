@@ -1,0 +1,469 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 29, 0.46);
+  z-index: 99999;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  touch-action: none;
+  overscroll-behavior: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.32s linear;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.backdrop.backdropOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0s linear;
+}
+
+/* Desktop Side Drawer */
+.drawer {
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  height: 100dvh;
+  background: #ffffff;
+  box-shadow: -12px 0 48px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  contain: layout paint;
+}
+
+:global([dir="rtl"]) .drawer {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.backdrop.backdropOpen .drawer {
+  transform: translate3d(0, 0, 0);
+}
+
+.touchArea {
+  width: 100%;
+  padding: 10px 0 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  background: #ffffff;
+}
+
+.iosHandleBar {
+  display: none;
+}
+
+/* Header */
+.header {
+  padding: 20px 28px 22px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  flex-shrink: 0;
+  touch-action: pan-y;
+}
+
+.headerTitle h3 {
+  font-family: var(--font-serif-luxury), "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0a0f1d;
+  margin: 0;
+}
+
+:global([dir="rtl"]) .headerTitle h3 {
+  font-family: var(--font-sans-luxury), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.itemCount {
+  font-family: var(--font-sans-luxury), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: #f1f5f9;
+  color: #0a0f1d;
+}
+
+/* Items List */
+.itemsList {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  padding: 8px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================================
+   2026 iOS BOTTOM SHEET FOR MOBILE SCREENS (<= 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+  .backdrop {
+    align-items: flex-end;
+    justify-content: center !important;
+    transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.32s linear;
+  }
+
+  .backdrop.backdropOpen {
+    transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear;
+  }
+
+  .drawer {
+    width: 100%;
+    max-width: 100%;
+    height: 85vh;
+    height: 85dvh;
+    border-radius: 26px 26px 0 0;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+    transform: translate3d(0, 100%, 0);
+    transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    contain: layout paint;
+    transform-origin: bottom center;
+  }
+
+  :global([dir="rtl"]) .drawer {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  /* Luxury global-brand physics: fluid decelerated slide-up */
+  .backdrop.backdropOpen .drawer {
+    transform: translate3d(0, 0, 0);
+    transition: transform 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .iosHandleBar {
+    display: block;
+    width: 44px;
+    height: 5px;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  .header {
+    padding: 10px 20px 14px;
+  }
+
+  .itemsList {
+    padding: 6px 20px 20px;
+    max-height: none;
+  }
+
+  .footer {
+    flex-shrink: 0;
+    padding: 14px 20px 20px;
+    padding-bottom: max(20px, env(safe-area-inset-bottom, 20px));
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    background: #ffffff;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .drawer {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.emptyIconCircle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #f8fafc;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.emptyTitle {
+  font-family: var(--font-sans-luxury);
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a0f1d;
+  margin: 0 0 6px;
+}
+
+.emptySubtitle {
+  font-family: var(--font-sans-luxury);
+  font-size: 13px;
+  color: #64748b;
+  max-width: 260px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Cart Item (Minimalist Luxury List) */
+.cartItem {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+}
+
+.cartItem:last-child {
+  border-bottom: none;
+}
+
+.itemImageWrapper {
+  width: 76px;
+  height: 76px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.itemImage {
+  object-fit: contain;
+}
+
+.itemDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemHeaderRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.itemName {
+  font-family: var(--font-serif-luxury), Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0a0f1d;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+:global([dir="rtl"]) .itemName {
+  font-family: var(--font-sans-luxury);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.removeBtn:hover {
+  color: #ef4444;
+}
+
+.itemType {
+  font-family: var(--font-sans-luxury);
+  font-size: 11.5px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.itemPrice {
+  font-family: var(--font-sans-luxury);
+  font-size: 14px;
+  font-weight: 700;
+  color: #0a0f1d;
+  margin-bottom: 8px;
+}
+
+.quantityRow {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+
+.counter {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 6px;
+  padding: 2px 4px;
+  background: #ffffff;
+}
+
+.countBtn {
+  background: transparent;
+  border: none;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #0a0f1d;
+  transition: background 0.15s ease;
+}
+
+.countBtn:hover {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.countNum {
+  font-family: var(--font-sans-luxury);
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 22px;
+  text-align: center;
+  color: #0a0f1d;
+}
+
+/* Footer with Side-by-Side Total & Blue Checkout Button */
+.footer {
+  padding: 14px 22px 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  background: rgba(255, 255, 255, 0.98);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.totalCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+:global([dir="rtl"]) .totalCol {
+  align-items: flex-start;
+}
+
+.totalLabel {
+  font-family: var(--font-sans-luxury);
+  font-size: 11px;
+  font-weight: 500;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.totalValue {
+  font-family: var(--font-sans-luxury);
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a0f1d;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.checkoutBtn {
+  flex: 1;
+  max-width: 250px;
+  height: 44px;
+  border-radius: 9999px;
+  background: #0750cd;
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans-luxury);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(7, 80, 205, 0.28);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+  padding: 0 16px;
+  white-space: nowrap;
+}
+
+.checkoutBtn:hover {
+  background: #0544b0;
+  transform: translateY(-0.5px);
+  box-shadow: 0 6px 18px rgba(7, 80, 205, 0.35);
+}
+
+.checkoutBtn:active {
+  transform: scale(0.985);
+  background: #043996;
+}

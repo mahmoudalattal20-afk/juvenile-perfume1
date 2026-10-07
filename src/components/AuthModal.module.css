@@ -1,0 +1,443 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.backdropVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 36px 30px 30px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(0.96);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.modalVisible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.handleArea {
+  display: none;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  inset-inline-end: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #f4f4f5;
+  color: #71717a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.closeBtn:hover {
+  background: #e4e4e7;
+  color: #0a0a0a;
+}
+
+.logoBox {
+  margin-bottom: 22px;
+}
+
+.modalTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.modalSubtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0 0 22px;
+  max-width: 320px;
+}
+
+/* ─── Form ─── */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  text-align: start;
+}
+
+.fieldLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+  padding-inline-start: 2px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0 14px;
+  background: #fafbfc;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.inputWrapper:focus-within {
+  border-color: #0750cd;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(7, 80, 205, 0.08);
+}
+
+.inputField {
+  flex: 1;
+  padding: 13px 4px;
+  border: none;
+  background: transparent;
+  font-size: 14.5px;
+  color: #0f172a;
+  outline: none;
+  font-weight: 500;
+  min-width: 0;
+}
+
+.inputField::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.togglePasswordBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.togglePasswordBtn:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+/* ─── Error Box ─── */
+.errorBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #dc2626;
+  text-align: start;
+  animation: shakeError 0.4s ease;
+}
+
+@keyframes shakeError {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ─── Google Sign-In Button (Free 2026 OAuth) ─── */
+.googleBtn {
+  width: 100%;
+  padding: 12px 18px;
+  background: #ffffff;
+  color: #1f2937;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.googleBtn:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.googleBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.googleBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.googleIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ─── Auth Divider ─── */
+.authDivider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 18px 0 16px;
+  gap: 12px;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.dividerText {
+  font-size: 11.5px;
+  color: #94a3b8;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ─── Submit Button ─── */
+.submitBtn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 2px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Disclaimer ─── */
+.disclaimer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-top: 18px;
+}
+
+.lockIcon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* ─── Demo Hint ─── */
+.demoHint {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 10px;
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  direction: ltr;
+  text-align: center;
+  font-family: monospace;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Success State ─── */
+.successBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0 8px;
+}
+
+.successCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #f0fdf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  animation: popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.successIcon {
+  color: #10b981;
+}
+
+.adminBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, #0750cd 0%, #3b82f6 100%);
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 12px;
+  animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+/* ─── Mobile Apple Sheet (120 FPS / Zero Blur / iOS Curve) ─── */
+@media (max-width: 768px) {
+  .backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 28px 28px 0 0;
+    padding: 10px 24px calc(24px + env(safe-area-inset-bottom, 16px));
+    max-height: 88dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 1;
+    transform: translate3d(0, 100%, 0);
+    transition: transform 0.34s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.28);
+    will-change: transform;
+  }
+
+  .modalVisible {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .handleArea {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 0 14px;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+  }
+
+  .handleBar {
+    width: 38px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.18);
+    transition: background 0.15s;
+  }
+
+  .handleArea:active .handleBar {
+    background: rgba(15, 23, 42, 0.35);
+  }
+
+  .closeBtn {
+    top: 14px;
+    inset-inline-end: 16px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .modalTitle {
+    font-size: 20px;
+  }
+
+  .inputField {
+    font-size: 16px; /* Prevent auto-zoom on iOS Safari */
+  }
+}
+

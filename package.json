@@ -1,0 +1,30 @@
+{
+  "name": "juvenile-perfume",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node launcher.js --mode dev",
+    "dev:local": "node launcher.js --mode local",
+    "prod": "node launcher.js --mode prod",
+    "tunnel": "node launcher.js --mode tunnel",
+    "clean": "node launcher.js --mode clean",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "lucide-react": "^0.475.0",
+    "next": "^15.1.7",
+    "pino": "^9.6.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@whiskeysockets/baileys": "^6.7.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "sharp": "^0.35.4",
+    "typescript": "^5.7.3"
+  }
+}

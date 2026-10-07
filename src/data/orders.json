@@ -1,0 +1,51 @@
+[
+  {
+    "orderId": "JUV-482180",
+    "createdAt": "2026-10-01T00:54:30.125Z",
+    "status": "pending_confirmation",
+    "customer": {
+      "firstName": "سيسذ",
+      "lastName": "سشي",
+      "phone": "01150683039",
+      "secondaryPhone": "213213213132",
+      "email": "sadsad@gmail.com",
+      "notes": "fsfs"
+    },
+    "delivery": {
+      "governorate": "القاهرة",
+      "city": "sdfsfd",
+      "address": "fdsfs",
+      "apartment": "fdsfs"
+    },
+    "shipping": {
+      "method": "شحن سريع عبر البريد المصري (جميع محافظات مصر)",
+      "cost": 0
+    },
+    "payment": {
+      "method": "الدفع عند الاستلام كاش (COD)"
+    },
+    "items": [
+      {
+        "id": "ventro",
+        "name": "فينترو",
+        "price": 1700,
+        "quantity": 2,
+        "image": "/products/ventro.png",
+        "type": "خلاصة عطر نقي"
+      },
+      {
+        "id": "liquid-gold",
+        "name": "LIQUID GOLD",
+        "price": 1900,
+        "quantity": 2,
+        "image": "/products/liquid-gold.png",
+        "type": "Gold Premium Collection"
+      }
+    ],
+    "subtotal": 7200,
+    "discount": 100,
+    "total": 7100,
+    "couponCode": "WELCOME",
+    "updatedAt": "2026-10-07T02:46:27.515Z"
+  }
+]

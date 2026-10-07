@@ -1,0 +1,62 @@
+/* ========================================================
+   MAISON LUXE PAGE TRANSITIONS & SILK DISSOLVE
+   (Calm, refined, zero eye strain, 60/120fps hardware-accelerated)
+   ======================================================== */
+
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(197, 160, 89, 0.4) 0%,
+    rgba(229, 192, 123, 1) 50%,
+    rgba(197, 160, 89, 0.8) 100%
+  );
+  box-shadow: 0 1px 6px rgba(197, 160, 89, 0.35);
+  z-index: 99999;
+  pointer-events: none;
+  transition: width 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 180ms ease-out;
+}
+
+[dir="rtl"] .progressBar {
+  left: auto;
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(197, 160, 89, 0.4) 0%,
+    rgba(229, 192, 123, 1) 50%,
+    rgba(197, 160, 89, 0.8) 100%
+  );
+}
+
+.pageWrapper {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pageWrapper.animating {
+  animation: pageEntrance 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pageEntrance {
+  0% {
+    opacity: 0.94;
+    transform: translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .progressBar {
+    display: none;
+  }
+  .pageWrapper {
+    animation: none !important;
+  }
+}

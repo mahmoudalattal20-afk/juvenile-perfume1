@@ -1,0 +1,108 @@
+.marqueeWrapper {
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #f0efe9;
+  border-bottom: 1px solid #f0efe9;
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.marqueeWrapper::before,
+.marqueeWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 48px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.marqueeWrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.marqueeWrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marqueeGroup {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding-right: 36px;
+  flex-shrink: 0;
+}
+
+.marqueeItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2b2b2b;
+  cursor: default;
+  transition: color 0.2s ease;
+}
+
+.marqueeItem:hover {
+  color: #0750cd;
+}
+
+/* Delicate Botanical / Luxury Sparkle Icon */
+.itemIcon {
+  color: #0750cd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.marqueeItem:hover .itemIcon {
+  transform: rotate(45deg) scale(1.15);
+}
+
+@media (max-width: 768px) {
+  .marqueeWrapper {
+    padding: 11px 0;
+  }
+  .marqueeGroup {
+    gap: 24px;
+    padding-right: 24px;
+  }
+  .marqueeItem {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    gap: 10px;
+  }
+}

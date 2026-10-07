@@ -1,0 +1,32 @@
+[
+  {
+    "id": "JUV-2026-9247",
+    "createdAt": "2026-10-07T05:23:03.585Z",
+    "clientIp": "::1",
+    "firstName": "شسي",
+    "lastName": "سشي",
+    "fullName": "شسي سشي",
+    "email": "324324s@gmail.com",
+    "phone": "324",
+    "subject": "استفسار عام",
+    "serviceType": "general",
+    "preferredContact": "whatsapp",
+    "message": "FDSADD",
+    "status": "new"
+  },
+  {
+    "id": "JUV-2026-1097",
+    "createdAt": "2026-10-07T05:04:40.034Z",
+    "clientIp": "::1",
+    "firstName": "Karim",
+    "lastName": "",
+    "fullName": "Karim",
+    "email": "karim@example.com",
+    "phone": "",
+    "subject": "استفسار عام",
+    "serviceType": "general",
+    "preferredContact": "whatsapp",
+    "message": "Hello from live test",
+    "status": "new"
+  }
+]

@@ -1,0 +1,448 @@
+/* =========================================
+   THE COLLECTIONS — JUVENILE SIGNATURE GALLERY
+   (Haute Parfumerie 2026 — Modern Atelier Design)
+   ========================================= */
+
+.section {
+  width: 100%;
+  padding: 60px 24px 100px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   EDITORIAL HEADER
+   ========================================= */
+.header {
+  text-align: center;
+  margin-bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.headerVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subTitle {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8e8e93;
+  margin-bottom: 12px;
+}
+
+.mainTitle {
+  font-family: var(--font-serif-luxury);
+  font-size: var(--luxury-section-title-size, clamp(26px, 2.6vw, 34px));
+  font-weight: 400;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  line-height: var(--luxury-section-title-lh, 1.25);
+  margin: 0;
+}
+
+:global([dir="rtl"]) .mainTitle,
+:global([lang="ar"]) .mainTitle {
+  font-family: var(--font-ar-heading) !important;
+  font-weight: 500;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+:global([dir="rtl"]) .subTitle,
+:global([lang="ar"]) .subTitle {
+  font-family: var(--font-ar-body) !important;
+  letter-spacing: 0 !important;
+}
+
+/* Delicate Vertical Divider Line */
+.dividerLine {
+  width: 1px;
+  height: 36px;
+  background: rgba(10, 10, 10, 0.14);
+  margin-top: 20px;
+}
+
+/* =========================================
+   CATEGORY FILTER TABS (نسائي • رجالي • UNISEX)
+   ========================================= */
+.filterBar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 26px;
+  background: #f4f4f5;
+  padding: 5px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.filterBtn {
+  background: transparent;
+  border: none;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #52525b;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.filterBtn:hover {
+  color: #0a0a0a;
+}
+
+.filterBtnActive {
+  background: #0a0a0a;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(10, 10, 10, 0.2);
+}
+
+/* =========================================
+   STAGE WRAPPER (SMOOTH TRANSITION)
+   ========================================= */
+.stageWrapper {
+  width: 100%;
+}
+
+/* 3-Column Luxury Product Grid */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+  min-height: 480px;
+}
+
+@media (max-width: 1040px) {
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+/* =========================================
+   JUVENILE SIGNATURE LUXURY CARD (2026 EDITION)
+   - Harmonized 28px Radius (Matches Hero)
+   - Continuous Silk Surface with Inner Studio Stage
+   - Absolute Multiply Blending (Zero Square Edges)
+   ========================================= */
+.productCard {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+  padding: 16px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.04);
+  animation: cardRise 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardRise {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.productCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(10, 10, 10, 0.25);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.12),
+              0 8px 20px -6px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================
+   INNER STUDIO WELL (SEAMLESS PURE WHITE WITH SOFT HALO)
+   ========================================= */
+.studioWell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.08;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.productCard:hover .studioWell {
+  background: #fafaf9;
+}
+
+/* Floating Action Icons (Glassmorphic Wishlist) */
+.wishlistBtn {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: #71717a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+}
+
+.wishlistBtn:hover {
+  color: #cf142b;
+  transform: scale(1.1);
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(207, 20, 43, 0.18);
+}
+
+.wishlistBtnActive {
+  color: #cf142b !important;
+  background: #ffffff !important;
+}
+
+/* Top Subtle Label (e.g. HAUTE PARFUMERIE) */
+.subtleBadge {
+  position: absolute;
+  top: 14px;
+  inset-inline-start: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Centered Perfume Bottle with Multiply Blending */
+.bottleContainer {
+  position: relative;
+  width: 82%;
+  height: 86%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* KILLS the white box edge completely! */
+  filter: contrast(1.04);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.07);
+}
+
+/* Soft Ambient Glow on Hover */
+.ambientHalo {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(40px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(0.8);
+  z-index: 0;
+}
+
+.haloFemme {
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.25) 0%, transparent 70%);
+}
+
+.haloHomme {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, transparent 70%);
+}
+
+.haloUnisex {
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.25) 0%, transparent 70%);
+}
+
+.productCard:hover .ambientHalo {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* =========================================
+   BOTTOM CARD INFO & ACTIONS
+   ========================================= */
+.cardInfo {
+  padding: 18px 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.productNotes {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.productName {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #0a0a0a;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.productPrice {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #1e1e24;
+  margin-top: 2px;
+}
+
+/* Modern Rounded Action Button */
+.actionBtn {
+  width: 100%;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 22px;
+  background: #0a0a0a;
+  border: 1px solid #0a0a0a;
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.actionBtn:hover {
+  background: #1e1e24;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+}
+
+.actionBtnSuccess {
+  background: #10b981 !important;
+  border-color: #10b981 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.3) !important;
+}
+
+.btnIcon {
+  width: 17px;
+  height: 17px;
+  stroke-width: 2;
+}
+
+/* =========================================
+   RESPONSIVE ADJUSTMENTS (HORIZONTAL SCROLL ON MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+  .section {
+    padding: 36px 16px 60px;
+  }
+
+  .header {
+    margin-bottom: 22px;
+  }
+
+  .mainTitle {
+    font-size: var(--luxury-section-title-size, clamp(20px, 5.5vw, 25px));
+  }
+
+  /* Horizontal Scroll Carousel on Mobile */
+  .productGrid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding: 8px 16px 24px;
+    margin: 0 -16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    min-height: auto;
+  }
+
+  .productGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .productCard {
+    flex: 0 0 280px;
+    width: 280px;
+    max-width: 80vw;
+    scroll-snap-align: start;
+    border-radius: 24px;
+    padding: 14px 14px 20px;
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.06);
+  }
+
+  .studioWell {
+    aspect-ratio: 1 / 1.05;
+    border-radius: 18px;
+    padding: 12px;
+  }
+
+  .productName {
+    font-size: 16px;
+  }
+
+  .productPrice {
+    font-size: 14.5px;
+  }
+
+  .actionBtn {
+    padding: 11px 18px;
+    font-size: 12.5px;
+  }
+}

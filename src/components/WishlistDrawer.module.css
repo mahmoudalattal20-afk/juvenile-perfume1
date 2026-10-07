@@ -1,0 +1,335 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 29, 0.46);
+  z-index: 99999;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  touch-action: none;
+  overscroll-behavior: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.32s linear;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.backdrop.backdropOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0s linear;
+}
+
+/* Desktop Side Drawer */
+.drawer {
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  height: 100dvh;
+  background: #ffffff;
+  box-shadow: -12px 0 48px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  contain: layout paint;
+}
+
+:global([dir="rtl"]) .drawer {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.backdrop.backdropOpen .drawer {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.touchArea {
+  width: 100%;
+  padding: 10px 0 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  background: #ffffff;
+}
+
+.iosHandleBar {
+  display: none;
+}
+
+.header {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  touch-action: pan-y;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerTitle h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0;
+}
+
+.heartIcon {
+  color: #ef4444;
+}
+
+.countBadge {
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.closeBtn {
+  background: #f4f4f5;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #52525b;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: #e4e4e7;
+  color: #0a0a0a;
+}
+
+.itemsList {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.emptyState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.emptyIconCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #fef2f2;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.emptyTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 6px;
+}
+
+.emptySubtitle {
+  font-size: 13px;
+  color: #71717a;
+  max-width: 240px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.wishlistItem {
+  display: flex;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.itemImageWrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.itemImage {
+  object-fit: contain;
+}
+
+.itemDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemName {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin: 0 0 4px;
+}
+
+.itemPrice {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0750cd;
+  margin-bottom: 12px;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.addBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #0a0a0a;
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.addBtn:hover {
+  background: #27272a;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  color: #a1a1aa;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.removeBtn:hover {
+  color: #ef4444;
+}
+
+/* ========================================================
+   2026 iOS BOTTOM SHEET FOR MOBILE SCREENS (<= 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+  .backdrop {
+    align-items: flex-end;
+    justify-content: center !important;
+    transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.32s linear;
+  }
+
+  .backdrop.backdropOpen {
+    transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear;
+  }
+
+  .drawer {
+    width: 100%;
+    max-width: 100%;
+    height: 85dvh;
+    max-height: 88dvh;
+    min-height: 48dvh;
+    border-radius: 26px 26px 0 0;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+    transform: translate3d(0, 100%, 0);
+    transition: transform 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    contain: layout paint;
+    transform-origin: bottom center;
+  }
+
+  :global([dir="rtl"]) .drawer {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  .backdrop.backdropOpen .drawer {
+    transform: translate3d(0, 0, 0);
+    /* Apple fluid bottom sheet deceleration */
+    transition: transform 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .iosHandleBar {
+    display: block;
+    width: 44px;
+    height: 5px;
+    border-radius: 9999px;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  .header {
+    padding: 10px 20px 14px;
+  }
+
+  .itemsList {
+    padding: 10px 20px 20px;
+    max-height: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .drawer {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,510 @@
+/* =========================================
+   MUSK COLLECTION PAGE — JUVENILE HAUTE PARFUMERIE
+   ========================================= */
+
+.mainWrapper {
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+/* =========================================
+   HERO BANNER
+   ========================================= */
+.heroBanner {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  background: radial-gradient(circle at 50% 20%, #202026 0%, #121216 55%, #09090b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 64px 24px 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bannerContent {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans-luxury);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 2px;
+}
+
+.breadcrumbLink {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.breadcrumbSeparator {
+  opacity: 0.5;
+}
+
+.breadcrumbCurrent {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(12px);
+  font-family: var(--font-sans-luxury);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fef08a;
+}
+
+.title {
+  font-family: var(--font-serif-luxury);
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+  font-family: var(--font-sans-luxury);
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 680px;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* =========================================
+   COLLECTION SECTION
+   ========================================= */
+.collectionSection {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 50px 24px 80px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 36px;
+}
+
+.countText {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   LUXURY EMPTY STATE
+   ========================================= */
+.emptyStateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 70px 24px 80px;
+  max-width: 640px;
+  margin: 0 auto;
+  border-radius: 28px;
+  background: radial-gradient(circle at center, #ffffff 0%, #fafaf9 100%);
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+}
+
+.emptyIconCircle {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b45309;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+}
+
+.emptyTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 10px;
+}
+
+.emptyText {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #64748b;
+  margin: 0 0 28px;
+  max-width: 480px;
+}
+
+.emptyActionsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.homeActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 999px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.24s ease;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+}
+
+.homeActionBtn:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.25);
+}
+
+.exploreActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.exploreActionBtn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* =========================================
+   PRODUCTS GRID
+   ========================================= */
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .productsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .heroBanner {
+    min-height: 340px;
+    padding: 60px 16px 45px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .subtitle {
+    font-size: 13.5px;
+  }
+  .collectionSection {
+    padding: 32px 14px 60px;
+  }
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .cardImageWrapper {
+    aspect-ratio: 1 / 1.15;
+  }
+  .productImg {
+    transform: scale(1.06);
+  }
+}
+
+/* Card Styling */
+.card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #e2e8f0;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+}
+
+.wishlistBtn {
+  position: absolute;
+  top: 12px;
+  inset-inline-end: 12px;
+  z-index: 4;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.wishlistBtn:hover {
+  background: #ffffff;
+  color: #e11d48;
+}
+
+.wishlistBtnActive {
+  color: #e11d48;
+  background: #ffffff;
+}
+
+.cardImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  background: #f8fafc;
+  overflow: hidden;
+  display: block;
+}
+
+.productImg {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover .productImg {
+  transform: scale(1.05);
+}
+
+.cardBody {
+  padding: 16px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  text-align: start;
+}
+
+.categoryTag {
+  font-family: var(--font-readex), var(--font-sans-luxury), sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.productName {
+  font-family: "Tenor Sans", var(--font-serif-luxury), serif;
+  font-size: 16.5px;
+  font-weight: 400;
+  color: #0f172a;
+  margin: 0 0 6px;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+:global([dir="rtl"]) .productName {
+  font-family: var(--font-readex), var(--font-ar-heading), sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.productName:hover {
+  color: #0750cd;
+}
+
+.productTagline {
+  font-family: var(--font-readex), var(--font-sans-luxury), sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #64748b;
+  margin: 0 0 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+  gap: 8px;
+}
+
+.priceWrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.priceWrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.priceText {
+  font-family: var(--font-outfit), var(--font-sans-luxury), sans-serif;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+:global([dir="rtl"]) .priceText {
+  font-family: var(--font-outfit), var(--font-readex), sans-serif;
+  font-weight: 700;
+}
+
+.originalPriceText {
+  font-family: var(--font-outfit), var(--font-sans-luxury), sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+:global([dir="rtl"]) .originalPriceText {
+  font-family: var(--font-outfit), var(--font-readex), sans-serif;
+}
+
+.addToCartBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid transparent;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-readex), var(--font-sans-luxury), sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.addToCartBtn:hover {
+  background: #0750cd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(7, 80, 205, 0.25);
+}
+
+.addToCartBtn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.addToCartBtnAdded {
+  background: #10b981 !important;
+  border-color: #10b981 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 540px) {
+  .cardFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .priceWrapper {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .priceWrap {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .priceText {
+    font-size: 15px;
+  }
+
+  .originalPriceText {
+    font-size: 11px;
+  }
+
+  .addToCartBtn {
+    width: 100%;
+    padding: 7.5px 10px;
+    font-size: 11px;
+  }
+}

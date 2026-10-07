@@ -1,0 +1,282 @@
+.heroContainer {
+  width: 100%;
+  max-width: var(--hero-desktop-max-w, 100%);
+  margin: 10px auto 36px;
+  padding: 0 20px;
+}
+
+/* =========================================
+   HERO CAROUSEL CARD
+   ========================================= */
+.carouselCard {
+  position: relative;
+  width: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: transparent;
+  aspect-ratio: var(--hero-desktop-ratio, 2560 / 1100);
+  max-height: var(--hero-desktop-max-h, none);
+  user-select: none;
+  transform: translateZ(0);
+  box-shadow: 0 14px 38px -10px rgba(15, 23, 42, 0.09);
+}
+
+/* Individual Slides with Apple Fluid Easing */
+.slideItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: opacity 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.82s linear;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* First slide is immediately visible on initial page render with zero delay and NO flash */
+.slideItem:first-child {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: none !important;
+}
+
+/* Active Slide */
+.slideActive {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+  transition: opacity 0.82s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.82s linear;
+}
+
+/* Zero jarring zoom pop on initial refresh - smooth zoom only applied when transitioning */
+.slideActive .bannerPicture,
+.slideActive .bannerImage {
+  transform: scale(1);
+}
+
+.carouselAnimated .slideActive .bannerPicture,
+.carouselAnimated .slideActive .bannerImage {
+  animation: heroCinematicZoomOut 7s cubic-bezier(0.25, 1, 0.5, 1) both;
+  will-change: transform;
+}
+
+@keyframes heroCinematicZoomOut {
+  0% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =========================================
+   CINEMATIC LUXURY SLIDE TRANSITIONS (SILKY FADE)
+   ========================================= */
+
+/* Leaving to left (Next): Silky fade-out, zero scale jumps */
+.slideLeavingToLeft {
+  opacity: 0;
+  z-index: 1;
+}
+
+.slideLeavingToLeft .bannerPicture,
+.slideLeavingToLeft .bannerImage {
+  animation: none;
+  transform: scale(1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Entering from right (Next): Prepare starting scale smoothly */
+.slideEnteringFromRight .bannerPicture,
+.slideEnteringFromRight .bannerImage {
+  transform: scale(1.03);
+  animation: none;
+}
+
+/* Entering from left (Prev): Prepare starting scale smoothly */
+.slideEnteringFromLeft .bannerPicture,
+.slideEnteringFromLeft .bannerImage {
+  transform: scale(1.03);
+  animation: none;
+}
+
+/* Leaving to right (Prev): Silky fade-out, zero scale jumps */
+.slideLeavingToRight {
+  opacity: 0;
+  z-index: 1;
+}
+
+.slideLeavingToRight .bannerPicture,
+.slideLeavingToRight .bannerImage {
+  animation: none;
+  transform: scale(1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bannerPictureWrap {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* High-performance picture container */
+.bannerPicture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Image inside slide - Clean, crisp, hardware-accelerated without initial jitter */
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optional Light Sheen Container */
+.lightSweep {
+  display: none;
+}
+
+/* =========================================
+   FLOATING WHITE CAPSULE PAGINATION
+   (Exact Match to User Reference Image)
+   ========================================= */
+.floatingCapsulePagination {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 9999px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 25;
+  user-select: none;
+}
+
+.capsuleDot {
+  width: 8px;
+  height: 8px;
+  background-color: #cbd5e1;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  transition: all 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.capsuleDot:hover {
+  background-color: #94a3b8;
+  transform: scale(1.25);
+}
+
+.capsuleDot:active {
+  transform: scale(0.9);
+}
+
+.capsulePillActive {
+  width: 32px;
+  height: 10px;
+  background: linear-gradient(135deg, #1d6bf3 0%, #0750cd 70%, #0044b3 100%);
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(7, 80, 205, 0.48);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.capsulePillActive::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: pillProgress 2.2s infinite linear;
+  will-change: transform;
+}
+
+@keyframes pillProgress {
+  0% { transform: translate3d(-100%, 0, 0); }
+  100% { transform: translate3d(100%, 0, 0); }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .heroContainer {
+    max-width: 100%;
+    padding: 0 12px;
+    margin: 12px auto 28px;
+  }
+
+  .carouselCard {
+    border-radius: 12px;
+    aspect-ratio: var(--hero-mobile-ratio, 16 / 9);
+    max-height: var(--hero-mobile-max-h, none);
+  }
+
+  .floatingCapsulePagination {
+    bottom: 12px;
+    padding: 6px 14px;
+    gap: 7px;
+  }
+
+  .capsuleDot {
+    width: 6.5px;
+    height: 6.5px;
+  }
+
+  .capsulePillActive {
+    width: 24px;
+    height: 7.5px;
+  }
+}
+
+/* Accessibility: Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .slideActive .bannerImage {
+    animation: none !important;
+    transform: none !important;
+  }
+  .slideLeavingToLeft .bannerImage,
+  .slideLeavingToRight .bannerImage,
+  .slideEnteringFromRight .bannerImage,
+  .slideEnteringFromLeft .bannerImage,
+  .bannerImage {
+    transform: none !important;
+  }
+  .slideItem {
+    transition: opacity 0.4s ease !important;
+  }
+}

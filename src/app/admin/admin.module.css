@@ -1,0 +1,3381 @@
+/* ==========================================================================
+   JUVENILE MAISON — 2026 DRIBBBLE FINEXY AESTHETIC ADMIN
+   Warm Mist Canvas • Pure Floating Cards • JUVENILE Brand Colors
+   ========================================================================== */
+
+/* Outer Canvas Wrapper */
+.canvasWrapper {
+  min-height: 100vh;
+  background-color: #f2f3f7;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: var(--font-readex), var(--font-outfit), -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #111827;
+}
+
+/* Floating App Frame */
+.appFrame {
+  width: 100%;
+  max-width: 1520px;
+  background: #f8f9fc;
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  overflow: hidden;
+  min-height: 900px;
+}
+
+/* ==========================================================================
+   1. SLIM ICON RAIL (SIDEBAR DOCK)
+   ========================================================================== */
+.iconRail {
+  width: 72px;
+  background: #ffffff;
+  border-inline-end: 1px solid #edf0f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+  flex-shrink: 0;
+}
+
+.railTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.railLogoBadge {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0750cd 0%, #053ea3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(7, 80, 205, 0.28);
+}
+
+.themeToggleBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.themeToggleBtn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.railNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.railIconBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.railIconBtn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.railIconBtnActive {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+
+.railBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   2. MAIN CONTENT STAGE
+   ========================================================================== */
+.mainStage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #f8f9fc;
+}
+
+/* Top Header Bar */
+.topBar {
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #edf0f5;
+  background: #ffffff;
+  position: relative;
+  z-index: 110;
+}
+
+.topBrandPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandNameText {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #0f172a;
+  text-transform: uppercase;
+}
+
+/* Segmented Pill Navigation Bar */
+.segmentedPillNav {
+  display: flex;
+  align-items: center;
+  background: #f1f3f7;
+  padding: 5px;
+  border-radius: 40px;
+  gap: 4px;
+}
+
+.segmentTab {
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.segmentTab:hover {
+  color: #0f172a;
+}
+
+.segmentTabActive {
+  background: #0f172a;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Top Right Controls & Profile Pill */
+.topRightActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.circleIconBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.circleIconBtn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.profilePill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 4px 6px;
+  border-radius: 30px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.profilePill:hover {
+  border-color: #cbd5e1;
+}
+
+.profileAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0750cd;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.profileName {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.profileRole {
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+/* Floating Dropdowns for Search, Notifications, Info, and Profile */
+.headerActionItem {
+  position: relative;
+}
+
+.headerDropdownBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: transparent;
+}
+
+.headerDropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  inset-inline-end: 0;
+  min-width: 320px;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: 1px solid #edf0f5;
+  box-shadow: 0 16px 44px rgba(15, 23, 42, 0.12);
+  padding: 16px;
+  z-index: 130;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: dropdownPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profileDropdownMenu {
+  min-width: 260px;
+}
+
+@keyframes dropdownPop {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dropdownTitle {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dropdownActionBtn {
+  background: none;
+  border: none;
+  color: #0750cd;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dropdownActionBtn:hover {
+  text-decoration: underline;
+}
+
+.notificationList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.notificationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  transition: all 0.2s;
+  text-align: start;
+}
+
+.notificationItem:hover {
+  background: #f1f5f9;
+}
+
+.notificationUnread {
+  border-inline-start: 3px solid #0750cd;
+}
+
+.notificationIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e0f2fe;
+  color: #0750cd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notificationTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.notificationDesc {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.notificationTime {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.profileMenuLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profileMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.15s;
+  text-align: start;
+  text-decoration: none;
+}
+
+.profileMenuItem:hover {
+  background: #f8fafc;
+  color: #0750cd;
+}
+
+.profileMenuItemDanger {
+  color: #cf142b !important;
+}
+
+.profileMenuItemDanger:hover {
+  background: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+/* ==========================================================================
+   3. GREETING HEADER
+   ========================================================================== */
+.greetingSection {
+  padding: 24px 32px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.greetingTitle {
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  color: #0f172a;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.greetingSubtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0;
+}
+
+.greetingRightBtns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.publishActionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: #0750cd;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(7, 80, 205, 0.3);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.publishActionBtn:hover {
+  background: #053ea3;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(7, 80, 205, 0.4);
+}
+
+.previewPillBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.previewPillBtn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.deletePillBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.deletePillBtn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  border-color: #fca5a5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+}
+
+.deletePillBtn:active {
+  transform: scale(0.96);
+}
+
+/* Deletion Confirmation Modal */
+.deleteConfirmWindow {
+  background: #ffffff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 28px 26px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  animation: modalScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.deleteWarningIconBox {
+  width: 64px;
+  height: 64px;
+  border-radius: 22px;
+  background: #fef2f2;
+  border: 1.5px solid #fee2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.12);
+}
+
+.deleteConfirmTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+
+.deleteConfirmSubtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.deleteItemPreviewCard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f8fafc;
+  border: 1px solid #edf0f5;
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  text-align: right;
+}
+
+.deleteItemImg {
+  width: 52px;
+  height: 62px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.deleteItemDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.deleteItemNameAr {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.deleteItemNameEn {
+  font-size: 12px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deleteItemPrice {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0750cd;
+}
+
+.deleteNoticeBox {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fff5f5;
+  border: 1px dashed #fca5a5;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 12.5px;
+  color: #991b1b;
+  text-align: right;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.deleteActionsRow {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+
+.deleteCancelBtn {
+  flex: 1;
+  padding: 12px 18px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.deleteCancelBtn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.deleteConfirmBtn {
+  flex: 1.4;
+  padding: 12px 20px;
+  border-radius: 16px;
+  border: none;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.35);
+  transition: all 0.2s;
+}
+
+.deleteConfirmBtn:hover {
+  background: #b91c1c;
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45);
+  transform: translateY(-1px);
+}
+
+.deleteConfirmBtn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   4. DASHBOARD BODY GRID (FINEXY 3-COL SYSTEM)
+   ========================================================================== */
+.dashboardContent {
+  padding: 16px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mainGridRow {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 20px;
+}
+
+/* Pure Floating White Cards */
+.cleanCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #edf0f5;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Total Balance / Main Vault Card */
+.vaultHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vaultLabel {
+  font-size: 12.5px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.currencySelector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.vaultBalanceValue {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  font-family: var(--font-outfit), sans-serif;
+  margin: 4px 0;
+}
+
+.trendGreenPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.vaultActionBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 6px 0;
+}
+
+.btnVaultPrimary {
+  padding: 12px;
+  border-radius: 24px;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnVaultPrimary:hover {
+  background: #1e293b;
+}
+
+.btnVaultSecondary {
+  padding: 12px;
+  border-radius: 24px;
+  background: #f8fafc;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnVaultSecondary:hover {
+  background: #f1f5f9;
+}
+
+/* Wallets / Mini spec boxes inside card */
+.miniBoxesRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.miniBox {
+  background: #ffffff;
+  border: 1px solid #edf0f5;
+  border-radius: 14px;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.miniBoxTitle {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.miniBoxValue {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.miniBoxStatus {
+  font-size: 10px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   5. 2x2 METRIC CARDS (INCLUDING HERO BRAND BLUE CARD)
+   ========================================================================== */
+.metricTilesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.tileCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #edf0f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
+}
+
+/* The Featured Hero Brand Card (JUVENILE Blue!) */
+.tileCardFeatured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #0750cd 0%, #053ea3 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(7, 80, 205, 0.28) !important;
+  border: none !important;
+  min-height: 105px;
+}
+
+.tileTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tileTitle {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.tileTitleWhite {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tileIconCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0750cd;
+}
+
+.tileIconCircleWhite {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.tileValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  margin: 6px 0 2px;
+}
+
+.tileValueWhite {
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 6px 0 2px;
+}
+
+.tileTrend {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tileTrendWhite {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================================
+   6. TOTAL INCOME / BAR CHART CARD
+   ========================================================================== */
+.chartHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.chartTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.chartSubtitle {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 2px 0 0;
+}
+
+.chartLegend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.legendDotBlue {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0750cd;
+  display: inline-block;
+}
+
+.legendDotBlack {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0f172a;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   6. TOTAL INCOME / SALES CURVE GRAPH CARD
+   ========================================================================== */
+.graphContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 180px;
+  margin-top: 6px;
+  direction: ltr; /* Keeps SVG coordinates and month labels in exact left-to-right chronological synchronization */
+}
+
+.salesSvg {
+  width: 100%;
+  height: 145px;
+  overflow: visible;
+  touch-action: none;
+  user-select: none;
+}
+
+.graphMonthsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px 0;
+  border-top: 1px solid #f1f5f9;
+  direction: ltr;
+}
+
+.graphMonthLabel {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 3px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  text-align: center;
+}
+
+.graphMonthLabel:hover {
+  color: #0750cd;
+  background: #eff6ff;
+}
+
+.graphMonthPeak {
+  color: #0750cd;
+  font-weight: 700;
+  background: #eff6ff;
+}
+
+/* Stylized Bars (Retained for backwards compatibility) */
+.barsContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 180px;
+  padding: 10px 0 0;
+  gap: 8px;
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.stackedBar {
+  width: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.barSegmentTop {
+  width: 100%;
+  background: #0750cd;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.3s;
+}
+
+.barSegmentBottom {
+  width: 100%;
+  background: #0f172a;
+  border-radius: 0 0 6px 6px;
+  transition: height 0.3s;
+}
+
+.barMonthLabel {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   7. RECENT ACTIVITIES / DATA TABLE SECTION
+   ========================================================================== */
+.tableCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid #edf0f5;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+}
+
+.tableHeaderBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tableTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.tableSearchFilter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 13px;
+  color: #334155;
+  width: 220px;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  width: 100%;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+}
+
+.finexyTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.finexyTable th {
+  text-align: start;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.finexyTable td {
+  padding: 14px;
+  font-size: 13px;
+  color: #1e293b;
+  border-bottom: 1px solid #f8fafc;
+  vertical-align: middle;
+}
+
+.finexyTable tr:hover td {
+  background: #fafbfe;
+}
+
+.statusPillCompleted {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #10b981;
+}
+
+.statusDotGreen {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+}
+
+.statusPillPending {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #cf142b;
+}
+
+.statusDotRed {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cf142b;
+}
+
+/* ==========================================================================
+   8. FRAGRANCE MANAGEMENT GRID (CATALOG TAB)
+   ========================================================================== */
+/* Category Filters Bar */
+.categoryFilterRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 2px 14px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.categoryFilterRow::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryFilterPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.categoryFilterPill:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.categoryFilterPillActive {
+  background: #0750cd;
+  color: #ffffff;
+  border-color: #0750cd;
+  box-shadow: 0 4px 14px rgba(7, 80, 205, 0.28);
+}
+
+.categoryFilterBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.categoryFilterPillActive .categoryFilterBadge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Direct File Upload Styles */
+.directUploadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1.5px dashed #cbd5e1;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.directUploadBtn:hover {
+  background: #e2e8f0;
+  border-color: #0750cd;
+  color: #0750cd;
+}
+
+.uploadCardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.uploadImgWrap {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0b0f19;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploadPreviewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.uploadLoadingOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(2px);
+}
+
+.catalogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.catalogItemCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid #edf0f5;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.catalogItemCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  border-color: #cbd5e1;
+}
+
+.catalogBottleRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.catalogBottleImg {
+  width: 64px;
+  height: 74px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.catalogInfo {
+  flex: 1;
+}
+
+.catalogName {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 2px;
+}
+
+.catalogCategory {
+  font-size: 11.5px;
+  color: #0750cd;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.catalogPrice {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.catalogPyramidBox {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid #edf0f5;
+  font-size: 11.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pyramidRow {
+  display: flex;
+  gap: 6px;
+  color: #475569;
+}
+
+.pyramidLabel {
+  color: #0750cd;
+  font-weight: 700;
+  min-width: 44px;
+}
+
+/* ==========================================================================
+   9. EDITING MODAL (BEAUTIFULLY ROUNDED FINEXY STYLE)
+   ========================================================================== */
+.topBarHidden {
+  display: none !important;
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modalWindow {
+  background: #ffffff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.modalTop {
+  padding: 24px 28px;
+  border-bottom: 1px solid #edf0f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalHeading {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.modalCloseBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.modalBody {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGrid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.cleanInput,
+.cleanTextarea {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.cleanInput:focus,
+.cleanTextarea:focus {
+  border-color: #0750cd;
+  box-shadow: 0 0 0 3px rgba(7, 80, 205, 0.12);
+}
+
+.modalFooter {
+  padding: 20px 28px;
+  border-top: 1px solid #edf0f5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  background: #fafbfe;
+  border-radius: 0 0 28px 28px;
+}
+
+/* Toast */
+.finexyToast {
+  position: fixed;
+  bottom: 24px;
+  inset-inline-end: 24px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 14px 22px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   TABLE & MOBILE LIST SWITCHER
+   ========================================================================== */
+.desktopTableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mobilePerfumeList {
+  display: none;
+}
+
+.iosDragHandle {
+  display: none;
+}
+
+/* Native iOS Inset Grouped Perfume Card */
+.iosPerfumeCard {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0.5px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.iosPerfumeCard:active {
+  transform: scale(0.98);
+  background: #f8fafc;
+}
+
+.iosPerfumeImg {
+  width: 54px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #f1f5f9;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.iosPerfumeMeta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.iosPerfumeTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.iosPerfumeNameAr {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.iosPerfumePrice {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0750cd;
+  white-space: nowrap;
+}
+
+.iosPerfumeSub {
+  font-size: 11.5px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iosPerfumeBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.iosPyramidSnippet {
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+
+.iosEditActionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0750cd;
+  background: rgba(7, 80, 205, 0.08);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+/* ==========================================================================
+   JUVENILE STOREFRONT FLOATING GLASS CAPSULE BOTTOM NAV
+   ========================================================================== */
+.bottomNavContainer {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* Bottom Navigation floats seamlessly on mobile and desktop */
+
+/* Glassmorphism Floating Capsule */
+.glassPill {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.14),
+              0 6px 18px -4px rgba(7, 80, 205, 0.12),
+              inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  user-select: none;
+  max-width: 95vw;
+}
+
+/* Nav Item (Button) */
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navItem:active {
+  transform: scale(0.92);
+}
+
+/* Inactive Icon Wrapper */
+.iconWrapper {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #4b5563;
+  pointer-events: none;
+}
+
+.navItem:hover:not(.navItemActive) .iconWrapper {
+  background: rgba(7, 80, 205, 0.06);
+  color: #0750cd;
+  transform: scale(1.06);
+}
+
+/* Active Expanded Capsule State */
+.navItemActive {
+  background: rgba(7, 80, 205, 0.08);
+  border: 1px solid rgba(7, 80, 205, 0.14);
+  padding-block: 3px;
+  padding-inline-start: 4px;
+  padding-inline-end: 12px;
+  box-shadow: inset 0 1px 2px rgba(7, 80, 205, 0.06);
+}
+
+/* Active Icon Circle: Vibrant Royal Blue Gradient */
+.navItemActive .iconWrapper {
+  background: linear-gradient(135deg, #327bff 0%, #0750cd 60%, #023896 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(7, 80, 205, 0.42);
+  animation: iconPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes iconPop {
+  0% {
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Active Label Text */
+.navLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0750cd;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  animation: labelSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes labelSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Badge for Perfumes Count */
+.badge {
+  position: absolute;
+  top: 1px;
+  inset-inline-end: 1px;
+  background: linear-gradient(135deg, #ff4155 0%, #cf142b 100%);
+  color: #ffffff;
+  font-size: 9.5px;
+  font-weight: 800;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(207, 20, 43, 0.4);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (DESKTOP & NATIVE IPHONE ADAPTATION)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .mainGridRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. Global Canvas & Frame as iPhone Screen */
+  .canvasWrapper {
+    padding: 0;
+    background: #f2f2f7;
+    min-height: 100vh;
+  }
+
+  .appFrame {
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: #f2f2f7;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  /* 2. Hide Desktop Sidebar Rail Completely */
+  .iconRail {
+    display: none !important;
+  }
+
+  /* 3. Main Stage with iOS Bottom Tab Padding */
+  .mainStage {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 20px));
+    background: #f2f2f7;
+  }
+
+  /* 4. Frosted Sticky iOS Top Header Bar */
+  .topBar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    padding: max(12px, env(safe-area-inset-top, 10px)) 16px 10px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .topBrandPill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .topRightActions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    gap: 8px;
+  }
+
+  .headerActionItem {
+    position: static !important;
+  }
+
+  .headerDropdownMenu {
+    position: absolute !important;
+    top: calc(100% + 10px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 20px !important;
+    box-shadow: 0 18px 48px rgba(15, 23, 42, 0.18) !important;
+    z-index: 135 !important;
+  }
+
+  .profileDropdownMenu {
+    min-width: 0 !important;
+  }
+
+  .headerDropdownBackdrop {
+    background: rgba(15, 23, 42, 0.25) !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+  }
+
+  /* iOS Segmented Control (Pill Switcher with smooth momentum scroll) */
+  .segmentedPillNav {
+    overflow-x: auto;
+    width: 100%;
+    padding: 3px;
+    border-radius: 12px;
+    background: rgba(118, 118, 128, 0.12);
+    gap: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .segmentedPillNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .segmentTab {
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 9px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  /* 5. iOS Large Title / Greeting Header */
+  .greetingSection {
+    padding: 16px 16px 8px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .greetingTitle {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    margin-bottom: 2px;
+  }
+
+  .greetingSubtitle {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .greetingRightBtns {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .publishActionBtn {
+    flex: 1;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    font-weight: 700;
+  }
+
+  .previewPillBtn {
+    padding: 12px 14px;
+    border-radius: 16px;
+    font-size: 13px;
+  }
+
+  /* 6. Dashboard Content & Grouped iOS Cards */
+  .dashboardContent {
+    padding: 8px 14px 20px;
+    gap: 12px;
+  }
+
+  .mainGridRow {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cleanCard,
+  .tableCard {
+    border-radius: 20px;
+    padding: 16px 14px;
+    border: 0.5px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02);
+  }
+
+  /* 7. Apple Home Screen 2x2 Widgets */
+  .metricTilesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .tileCard {
+    border-radius: 18px;
+    padding: 14px;
+    min-height: 110px;
+  }
+
+  .tileValue,
+  .tileValueWhite {
+    font-size: 20px;
+    margin: 4px 0 2px;
+  }
+
+  .tileTitle,
+  .tileTitleWhite {
+    font-size: 11px;
+  }
+
+  .tileIconCircle,
+  .tileIconCircleWhite {
+    width: 28px;
+    height: 28px;
+  }
+
+  .vaultBalanceValue {
+    font-size: 26px;
+  }
+
+  .miniBoxesRow {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .miniBox {
+    padding: 8px 6px;
+    border-radius: 10px;
+  }
+
+  .miniBoxTitle {
+    font-size: 10px;
+  }
+
+  .miniBoxValue {
+    font-size: 12px;
+  }
+
+  /* 8. Compact Stacked Bar Chart */
+  .barsContainer {
+    height: 120px;
+    gap: 4px;
+  }
+
+  .stackedBar {
+    width: 14px;
+  }
+
+  /* 9. Switch Table to iOS Inset Grouped List on Mobile */
+  .desktopTableWrapper {
+    display: none !important;
+  }
+
+  .mobilePerfumeList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tableHeaderBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .tableSearchFilter {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .searchBox {
+    flex: 1;
+  }
+
+  /* 10. Catalog Grid on Products Tab */
+  .catalogGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* 11. Floating Glass Capsule Bottom Nav on Mobile */
+  .bottomNavContainer {
+    display: flex !important;
+    position: fixed !important;
+    bottom: max(18px, env(safe-area-inset-bottom, 18px)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 99999 !important;
+    pointer-events: none !important;
+  }
+
+  .glassPill {
+    gap: 4px;
+    padding: 5px 8px;
+  }
+
+  .iconWrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* 12. iOS Bottom Sheet Modal */
+  .modalBackdrop {
+    align-items: flex-end;
+    padding: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 100000;
+  }
+
+  .modalWindow {
+    width: 100%;
+    max-width: 100%;
+    max-height: 88vh;
+    border-radius: 26px 26px 0 0;
+    animation: iosSheetUp 0.32s cubic-bezier(0.32, 1, 0.23, 1);
+  }
+
+  .iosDragHandle {
+    display: block;
+    width: 38px;
+    height: 5px;
+    background: #d1d1d6;
+    border-radius: 3px;
+    margin: 8px auto 6px;
+  }
+
+  .modalTop {
+    padding: 12px 18px 14px;
+  }
+
+  .modalBody {
+    padding: 14px 18px 24px;
+    max-height: calc(88vh - 130px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .formGrid2 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Prevent iOS Safari auto-zoom on form inputs */
+  .cleanInput,
+  .cleanTextarea {
+    font-size: 16px !important;
+  }
+
+  .modalFooter {
+    padding: 14px 18px max(14px, env(safe-area-inset-bottom, 14px));
+  }
+
+  .deleteConfirmWindow {
+    max-width: 100%;
+    border-radius: 26px 26px 0 0;
+    padding: 24px 20px max(24px, env(safe-area-inset-bottom, 24px));
+    animation: iosSheetUp 0.3s cubic-bezier(0.32, 1, 0.23, 1);
+  }
+}
+
+@keyframes iosSheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   ORDERS MANAGEMENT SYSTEM (LIVE ORDERS & REAL SALES)
+   ========================================================================== */
+
+.ordersHeaderTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ordersLiveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.pulseDotLive {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulseLiveGreen 1.8s infinite;
+}
+
+@keyframes pulseLiveGreen {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.orderFilterTabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-bottom: 4px;
+}
+
+.orderFilterPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.orderFilterPill:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.orderFilterPillActive {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+}
+
+.orderFilterCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 7px;
+  border-radius: 12px;
+  font-size: 10.5px;
+  font-weight: 700;
+  background: rgba(148, 163, 184, 0.15);
+  color: inherit;
+}
+
+.orderFilterPillActive .orderFilterCount {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+/* Status Badges */
+.statusBadgeBase {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.statusPending {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+.statusProcessing {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+.statusShipped {
+  background: #f5f3ff;
+  color: #6d28d9;
+  border-color: #ddd6fe;
+}
+
+.statusDelivered {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.statusCancelled {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+/* Interactive Status Selector inside Table */
+.statusSelectControl {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 6px 26px 6px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+  border-width: 1.5px;
+  border-style: solid;
+  background-repeat: no-repeat;
+  background-position: left 8px center;
+  background-size: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+.statusSelectControl:focus {
+  box-shadow: 0 0 0 3px rgba(7, 80, 205, 0.15);
+}
+
+/* Items Preview Pill inside Table */
+.orderItemsPillList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 220px;
+}
+
+.orderItemRowSnippet {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #1e293b;
+}
+
+.orderItemBadgeCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0750cd;
+  border: 1px solid #e2e8f0;
+}
+
+/* WhatsApp Direct Action Button */
+.whatsappDirectBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: #25d366;
+  color: #ffffff !important;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.whatsappDirectBtn:hover {
+  background: #1ea952;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+/* Action Icon Button */
+.actionBtnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.actionBtnSecondary:hover {
+  background: #f8fafc;
+  color: #0750cd;
+  border-color: #cbd5e1;
+}
+
+/* Mobile Order Card styling */
+.mobileOrderCard {
+  background: #ffffff;
+  border: 1px solid #edf0f5;
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileOrderTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.mobileOrderId {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+  font-family: monospace;
+}
+
+.mobileOrderDate {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.mobileOrderCustomer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobileCustomerName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.mobileCustomerPhone {
+  font-size: 12px;
+  color: #64748b;
+  direction: ltr;
+  text-align: right;
+}
+
+.mobileOrderItemsBox {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobileOrderFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.mobileOrderTotal {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.mobileOrderActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Full Order Details Modal */
+.orderDetailModalWindow {
+  background: #ffffff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.22);
+  position: relative;
+  overflow: hidden;
+  animation: modalScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.orderModalHeader {
+  padding: 22px 26px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderModalBody {
+  padding: 22px 26px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.orderDetailSection {
+  background: #f8fafc;
+  border: 1px solid #eef2f6;
+  border-radius: 18px;
+  padding: 16px 18px;
+}
+
+.orderDetailSectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.orderDetailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.orderDetailRow:last-child {
+  border-bottom: none;
+}
+
+.orderDetailLabel {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.orderDetailValue {
+  color: #0f172a;
+  font-weight: 700;
+  text-align: left;
+}
+
+.orderItemModalCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.orderItemModalCard:last-child {
+  margin-bottom: 0;
+}
+
+/* WhatsApp Bot Status Button & Modal */
+.whatsappStatusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid;
+  user-select: none;
+}
+
+.whatsappStatusPillConnected {
+  background: #f0fdf4;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.whatsappStatusPillConnected:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.whatsappStatusPillDisconnected {
+  background: #fffbeb;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+.whatsappStatusPillDisconnected:hover {
+  background: #fef3c7;
+  border-color: #fcd34d;
+}
+
+.whatsappQrCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 20px;
+  border: 1.5px dashed #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.whatsappQrImage {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.whatsappStepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.whatsappStepNumber {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ==========================================================================
+   COUPON & PROMO SYSTEM (GLOBAL BRAND LUXURY STYLE)
+   ========================================================================== */
+.couponMetricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.couponMetricCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 20px;
+  border: 1px solid #edf0f5;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.couponMetricCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.couponMetricIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.couponMetricValue {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.couponMetricLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.couponsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.couponCard {
+  background: #ffffff;
+  border-radius: 22px;
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.couponCard:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.couponCardInactive {
+  background: #fbfcfe;
+  opacity: 0.72;
+  border-style: dashed;
+}
+
+.couponCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.couponCodeBox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8fafc;
+  border: 1.5px dashed #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+.couponCodeText {
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #0f172a;
+}
+
+.couponCopyBtn {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.couponCopyBtn:hover {
+  background: #0750cd;
+  border-color: #0750cd;
+  color: #ffffff;
+}
+
+.couponStatusToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.couponStatusActive {
+  background: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.couponStatusActive:hover {
+  background: #d1fae5;
+}
+
+.couponStatusDisabled {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+
+.couponStatusDisabled:hover {
+  background: #e2e8f0;
+}
+
+.couponValueDisplay {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.couponValueNumber {
+  font-size: 32px;
+  font-weight: 900;
+  color: #0750cd;
+  line-height: 1;
+}
+
+.couponValueType {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.couponDescription {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.couponDetailsBox {
+  background: #f8fafc;
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid #f1f5f9;
+}
+
+.couponDetailRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+}
+
+.couponDetailLabel {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.couponDetailValue {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.couponActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.couponEditBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.couponEditBtn:hover {
+  background: #1e293b;
+}
+
+.couponDeleteBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fee2e2;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.couponDeleteBtn:hover {
+  background: #fee2e2;
+}
+
+.typeSegmentContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.typeSegmentBtn {
+  padding: 8px;
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.typeSegmentBtnActive {
+  background: #ffffff;
+  color: #0750cd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   EXECUTIVE ADMIN LOGIN GATE (HAUTE PARFUMERIE NOIR SPEC)
+   ========================================================================== */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinIcon {
+  animation: spinSlow 1s linear infinite;
+}
+
+.adminGateWrapper {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-readex), var(--font-outfit), -apple-system, sans-serif;
+}
+
+.adminGateCard {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 44px 38px 36px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.adminGateLogoWrapper {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminGateLogo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.adminGateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #0f172a;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+
+.adminGateForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.adminGateInputGroup {
+  width: 100%;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.adminGateLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.adminGateInputWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 0 14px;
+  direction: ltr;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.adminGateInputWrapper:focus-within {
+  border-color: #0f172a;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.07);
+}
+
+.adminGateInput {
+  flex: 1;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 12px 0;
+  font-size: 14.5px;
+  color: #0f172a;
+  outline: none;
+  direction: ltr;
+  text-align: left;
+}
+
+.adminGateInput::placeholder {
+  color: #94a3b8;
+}
+
+.adminGateEyeBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.adminGateEyeBtn:hover {
+  color: #0f172a;
+}
+
+.adminGateSubmitBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+  margin-top: 6px;
+}
+
+.adminGateSubmitBtn:hover:not(:disabled) {
+  background: #1e293b;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.adminGateSubmitBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.adminGateSubmitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.adminGateError {
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.adminGateFooterNote {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
+.adminGateFooterNote svg {
+  color: #64748b;
+}
+
+/* Account Security Modal Professional Styling */
+.accountModalTabs {
+  display: flex;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 12px;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.accountModalTabBtn {
+  flex: 1;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.accountModalTabBtnActive {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.accountInputRow {
+  display: flex;
+  direction: ltr;
+  align-items: center;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accountInputRow:focus-within {
+  border-color: #0f172a;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.06);
+  background: #ffffff;
+}
+
+.accountInputField {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  direction: ltr;
+  text-align: left;
+}
+
+.accountInputToggleBtn {
+  background: transparent;
+  border: none;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  height: 100%;
+}
+
+.accountInputToggleBtn:hover {
+  color: #0f172a;
+}
+
+.accountCancelBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 90px;
+}
+
+.accountCancelBtn:hover:not(:disabled) {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.accountCancelBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.accountSubmitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 130px;
+}
+
+.accountSubmitBtn:hover:not(:disabled) {
+  background: #1e293b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.35);
+}
+
+.accountSubmitBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.accountSubmitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+

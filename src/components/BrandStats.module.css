@@ -1,0 +1,249 @@
+/* =========================================
+   BRAND STATS & ARTISANAL HERITAGE
+   (Unified Composition: Central Flacon & Orbiting Metrics)
+   ========================================= */
+
+.section {
+  width: 100%;
+  padding: 96px 24px;
+  background: radial-gradient(circle at 50% 50%, #faf9f6 0%, #f3f1ea 100%);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* 3-Column Layout: Start Stats | Center Flacon | End Stats */
+.statsLayout {
+  display: grid;
+  grid-template-columns: 1fr minmax(260px, 340px) 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Columns */
+.statsColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 64px;
+  z-index: 2;
+}
+
+/* Align stats towards the center bottle */
+.columnStart {
+  align-items: flex-end;
+  text-align: end;
+}
+
+.columnEnd {
+  align-items: flex-start;
+  text-align: start;
+}
+
+/* Individual Stat Block */
+.statBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.statBlock:hover {
+  transform: translateY(-3px);
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Stat Number */
+.statNumber {
+  font-size: clamp(40px, 4.5vw, 58px);
+  font-weight: 600;
+  line-height: 1;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.columnStart .statNumber {
+  justify-content: flex-end;
+}
+
+.columnEnd .statNumber {
+  justify-content: flex-start;
+}
+
+.statSuffix {
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 500;
+  color: #d4af37; /* Warm luxury gold accent */
+  margin-inline-start: 2px;
+}
+
+.statLabel {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #52525b;
+  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Center Bottle Wrapper (No Box, Pure Luxury Floating Flacon) */
+.centerBottleWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  padding: 10px 0;
+}
+
+/* Soft Warm Champagne / Golden Aura Behind The Bottle */
+.auraGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212, 175, 55, 0.20) 0%,
+    rgba(245, 235, 210, 0.12) 45%,
+    transparent 72%
+  );
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bottleContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottleImage {
+  width: auto;
+  height: clamp(340px, 38vw, 470px);
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px rgba(15, 23, 42, 0.12)) drop-shadow(0 6px 12px rgba(212, 175, 55, 0.15));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.centerBottleWrapper:hover .bottleImage {
+  transform: translateY(-8px) scale(1.02);
+  filter: drop-shadow(0 26px 36px rgba(15, 23, 42, 0.18)) drop-shadow(0 10px 20px rgba(212, 175, 55, 0.25));
+}
+
+/* Ground Contact Pedestal Shadow */
+.pedestalShadow {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(15, 23, 42, 0.28) 0%,
+    rgba(15, 23, 42, 0.08) 45%,
+    transparent 75%
+  );
+  filter: blur(5px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive (Tablet & Mobile) */
+@media (max-width: 900px) {
+  .section {
+    padding: 60px 16px;
+  }
+
+  .statsLayout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Arrange: Top stats -> Bottle in center -> Bottom stats */
+  .columnStart {
+    order: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .columnStart .statNumber {
+    justify-content: center;
+  }
+
+  .centerBottleWrapper {
+    order: 2;
+  }
+
+  .bottleImage {
+    height: clamp(260px, 50vw, 340px);
+  }
+
+  .columnEnd {
+    order: 3;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .columnEnd .statNumber {
+    justify-content: center;
+  }
+
+  .statNumber {
+    font-size: 38px;
+  }
+
+  .statLabel {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .columnStart,
+  .columnEnd {
+    gap: 12px;
+  }
+
+  .statNumber {
+    font-size: 32px;
+  }
+
+  .bottleImage {
+    height: 250px;
+  }
+}

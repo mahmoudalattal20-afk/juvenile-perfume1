@@ -1,0 +1,42 @@
+name: Deploy Juvenile Perfume to VPS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Production VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Executing remote SSH commands for deployment
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: 22
+          script_stop: true
+          script: |
+            echo "=== STARTING SAFE JUVENILE DEPLOYMENT ==="
+            cd /var/www/juvenileperfume
+            
+            # Fetch and reset strictly within /var/www/juvenileperfume
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # Ensure upload permissions
+            mkdir -p public/uploads/videos
+            chmod -R 755 public/uploads
+            
+            # Install dependencies & production build
+            npm install --production=false
+            npm run build
+            
+            # Restart only the juvenile-perfume PM2 service
+            pm2 restart juvenile-perfume
+            pm2 save
+            
+            echo "=== JUVENILE DEPLOYMENT COMPLETED SUCCESSFULLY ==="

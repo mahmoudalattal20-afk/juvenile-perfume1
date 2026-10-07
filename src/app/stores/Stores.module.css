@@ -1,0 +1,496 @@
+/* ==========================================================================
+   JUVENILE PERFUMES — OUR BRANCH (AUTHENTIC EGYPTIAN LUXURY 2026 UI/UX)
+   ========================================================================== */
+
+.pageWrapper {
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  color: #111827;
+  padding: 32px 0 80px 0;
+  font-family: var(--font-ar-unified, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ==========================================================================
+   1. GRAND VISUAL HERO SECTION (IMMERSIVE SHOWCASE)
+   ========================================================================== */
+.heroDestinationCard {
+  background: #F8F9FA;
+  border-radius: 28px;
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 960px) {
+  .heroDestinationCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.heroContentSide {
+  padding: clamp(32px, 4vw, 54px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+  gap: 16px;
+}
+
+html[dir="ltr"] .heroContentSide {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.heroPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111827;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.heroStatusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16A34A;
+  box-shadow: 0 0 8px #16A34A;
+}
+
+.heroTitle {
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+  text-transform: none;
+}
+
+.heroDesc {
+  font-size: 15.5px;
+  color: #4B5563;
+  line-height: 1.65;
+  max-width: 480px;
+}
+
+.heroQuickDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.quickDetailItem {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.quickDetailIcon {
+  color: #0066FF;
+  flex-shrink: 0;
+}
+
+.heroActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+@media (max-width: 500px) {
+  .heroActions {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+.btnPrimaryCall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #0a0f1d;
+  color: #FFFFFF;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(10, 15, 29, 0.12);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btnPrimaryCall:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(10, 15, 29, 0.22);
+}
+
+.btnPrimaryCall:active {
+  transform: scale(0.98);
+}
+
+.btnWhatsAppGreen {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #f0fdf4;
+  color: #166534;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #bbf7d0;
+  box-shadow: 0 1px 4px rgba(22, 101, 52, 0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btnWhatsAppGreen:hover {
+  background: #16a34a;
+  color: #FFFFFF;
+  border-color: #16a34a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.25);
+}
+
+.btnWhatsAppGreen:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 500px) {
+  .btnPrimaryCall,
+  .btnWhatsAppGreen {
+    height: 42px;
+    padding: 0 10px;
+    font-size: 12px;
+    border-radius: 12px;
+    gap: 6px;
+  }
+}
+
+/* Hero Image Side */
+.heroImageSide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  background: #E5E7EB;
+  overflow: hidden;
+}
+
+@media (max-width: 960px) {
+  .heroImageSide {
+    min-height: 380px;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.heroImageSide:hover .heroImage {
+  transform: scale(1.02);
+}
+
+/* ==========================================================================
+   2. HOW TO REACH US (EGYPTIAN WAYFINDING GUIDE)
+   ========================================================================== */
+.wayfindingSection {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #E5E7EB;
+  padding: clamp(28px, 4vw, 42px);
+}
+
+.sectionHeader {
+  margin-bottom: 24px;
+  text-align: right;
+}
+
+html[dir="ltr"] .sectionHeader {
+  text-align: left;
+}
+
+.sectionTitle {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.sectionSubtitle {
+  font-size: 14.5px;
+  color: #6B7280;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .stepsGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.stepCard {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 18px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: right;
+}
+
+html[dir="ltr"] .stepCard {
+  text-align: left;
+}
+
+.stepNumber {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #111827;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.stepDesc {
+  font-size: 13.5px;
+  color: #6B7280;
+  line-height: 1.5;
+}
+
+/* Lost inside the mall callout */
+.lostBanner {
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0;
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media (max-width: 680px) {
+  .lostBanner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .lostBanner a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.lostBannerText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lostBannerTitle {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #166534;
+}
+
+.lostBannerDesc {
+  font-size: 13px;
+  color: #15803D;
+}
+
+.lostWhatsAppBtn {
+  background: #16A34A;
+  color: #FFFFFF;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.lostWhatsAppBtn:hover {
+  background: #15803D;
+}
+
+/* ==========================================================================
+   3. IN-STORE PERKS (EXPERIENCE CARDS)
+   ========================================================================== */
+.perksGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .perksGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.perkCard {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: right;
+  transition: transform 0.2s ease;
+}
+
+html[dir="ltr"] .perkCard {
+  text-align: left;
+}
+
+.perkCard:hover {
+  transform: translateY(-2px);
+  border-color: #D1D5DB;
+}
+
+.perkIconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  color: #0066FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perkTitle {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.perkDesc {
+  font-size: 13.5px;
+  color: #6B7280;
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   4. MAP CONTAINER
+   ========================================================================== */
+.mapCard {
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 1px solid #E5E7EB;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mapHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.mapTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.mapDirectionsLink {
+  background: #0066FF;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s ease;
+}
+
+.mapDirectionsLink:hover {
+  background: #0052CC;
+}
+
+.mapFrameBox {
+  width: 100%;
+  height: 380px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+  background: #E5E7EB;
+}
+
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}

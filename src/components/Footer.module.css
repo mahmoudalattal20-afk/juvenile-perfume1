@@ -1,0 +1,319 @@
+/* =========================================
+   JUVENILE HAUTE PARFUMERIE — SIGNATURE FOOTER
+   (Expansive High-Fashion Rounded Luxury Card in #f2f2f2)
+   ========================================= */
+
+.footer {
+  width: 100%;
+  background: transparent;
+  /* Proportional small gap all around the card */
+  padding: 20px clamp(14px, 1.5vw, 24px) 20px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%; /* Spans full desktop width with only the small outer edge gap */
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  border-radius: clamp(36px, 3.2vw, 54px);
+  /* Significantly taller vertical padding */
+  padding: clamp(80px, 8vw, 120px) clamp(36px, 5vw, 96px) 54px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 640px; /* Grand, tall luxury presence */
+}
+
+/* =========================================
+   MAIN FOOTER NAVIGATION COLUMNS
+   ========================================= */
+.mainFooter {
+  padding-bottom: 72px;
+  flex: 1;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: clamp(40px, 5vw, 84px);
+  align-items: start;
+}
+
+/* Brand Column */
+.brandCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoLink {
+  display: inline-block;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.brandLogo {
+  width: 210px;
+  height: auto;
+  object-fit: contain;
+}
+
+.brandBio {
+  font-family: var(--font-sans-luxury);
+  font-size: 15px;
+  line-height: 1.85;
+  color: #525252;
+  margin: 0 0 34px;
+  max-width: 440px;
+  letter-spacing: 0;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.contactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans-luxury);
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  width: fit-content;
+}
+
+.contactItem:hover {
+  color: #000000;
+  transform: translateX(-3px);
+}
+
+:global([dir="ltr"]) .contactItem:hover {
+  transform: translateX(3px);
+}
+
+.contactIcon {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.phoneNum {
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.socialGroup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.socialBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.socialBtn:hover {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
+}
+
+/* Navigation Columns */
+.navCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.colHeading {
+  font-family: var(--font-sans-luxury) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #0f172a;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em !important;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+}
+
+:global([dir="rtl"]) .colHeading,
+:global([lang="ar"]) .colHeading {
+  font-family: var(--font-ar-heading) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+
+.linksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footerLink {
+  font-family: var(--font-sans-luxury);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: #555555;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+  width: fit-content;
+}
+
+.footerLink:hover {
+  color: #000000;
+  transform: translateX(-4px);
+}
+
+:global([dir="ltr"]) .footerLink:hover {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   BOTTOM BAR (COPYRIGHT & LEGAL)
+   ========================================= */
+.bottomBar {
+  padding-top: 34px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.copyrightBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.copyrightText {
+  font-family: var(--font-sans-luxury);
+  font-size: 13.5px;
+  color: #666666;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.legalLinks {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.legalLink {
+  font-family: var(--font-sans-luxury);
+  font-size: 13px;
+  color: #737373;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.legalLink:hover {
+  color: #000000;
+}
+
+.legalDot {
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 11px;
+}
+
+/* =========================================
+   RESPONSIVE (TABLET & MOBILE)
+   ========================================= */
+@media (max-width: 1080px) {
+  .footer {
+    padding: 16px 16px 20px;
+  }
+
+  .container {
+    padding: 56px 40px 36px;
+    border-radius: 36px;
+    min-height: auto;
+  }
+
+  .footerGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 24px;
+  }
+
+  .brandCol {
+    grid-column: span 3;
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding-bottom: 115px; /* Space for mobile floating bottom nav capsule */
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 12px 12px 115px;
+  }
+
+  .container {
+    padding: 40px 22px 26px;
+    border-radius: 26px;
+    min-height: auto;
+  }
+
+  .footerGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+  }
+
+  .brandCol {
+    grid-column: span 2;
+  }
+
+  .navCol:last-child {
+    grid-column: span 2;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .copyrightBlock {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,382 @@
+/* ==========================================================================
+   StoreSection.module.css - Citystars Flagship Store Showcase
+   ========================================================================== */
+
+.section {
+  position: relative;
+  width: 100%;
+  padding: 48px 0 64px;
+  background: #ffffff;
+  color: #0a0f1d;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.storeCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: stretch;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+:global([dir="rtl"]) .storeCard {
+  grid-template-columns: 1fr 1.15fr;
+}
+
+.storeCard:hover {
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.07);
+  border-color: #cbd5e1;
+}
+
+/* --------------------------------------------------------------------------
+   IMAGE SIDE
+   -------------------------------------------------------------------------- */
+.imageSide {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  height: 100%;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+:global([dir="rtl"]) .imageSide {
+  order: 1;
+}
+
+:global([dir="rtl"]) .contentSide {
+  order: 2;
+}
+
+.storeImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.storeCard:hover .storeImage {
+  transform: scale(1.03);
+}
+
+/* --------------------------------------------------------------------------
+   CONTENT SIDE
+   -------------------------------------------------------------------------- */
+.contentSide {
+  padding: clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: right;
+  gap: 16px;
+}
+
+:global([dir="ltr"]) .contentSide {
+  text-align: left;
+}
+
+/* Status Pill */
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 8px #16a34a;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.7;
+  }
+}
+
+/* Title & Description */
+.title {
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 700;
+  color: #0a0f1d;
+  line-height: 1.3;
+  margin: 0;
+}
+
+:global([dir="ltr"]) .title {
+  font-family: var(--font-serif-luxury), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.description {
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: clamp(13.5px, 1.1vw, 15px);
+  font-weight: 400;
+  color: #475569;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 520px;
+}
+
+:global([dir="ltr"]) .description {
+  font-family: var(--font-sans-luxury), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   INFO PILLS LIST
+   -------------------------------------------------------------------------- */
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 4px;
+}
+
+.infoItem {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+:global([dir="ltr"]) .infoItem {
+  font-family: var(--font-sans-luxury), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.infoItem:hover {
+  border-color: #cbd5e1;
+}
+
+.infoItemText {
+  flex: 1;
+}
+
+.infoIcon {
+  color: #0066ff;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   ACTION BUTTONS (Modern Architectural 2026 UI/UX)
+   -------------------------------------------------------------------------- */
+.actionRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.mapBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #0a0f1d;
+  color: #ffffff;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(10, 15, 29, 0.12);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+:global([dir="ltr"]) .mapBtn {
+  font-family: var(--font-sans-luxury), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.mapBtn:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(10, 15, 29, 0.22);
+}
+
+.mapBtn:active {
+  transform: scale(0.98);
+}
+
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #f0fdf4;
+  color: #166534;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #bbf7d0;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(22, 101, 52, 0.06);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+:global([dir="ltr"]) .whatsappBtn {
+  font-family: var(--font-sans-luxury), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.whatsappBtn:hover {
+  background: #16a34a;
+  color: #ffffff;
+  border-color: #16a34a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.25);
+}
+
+.whatsappBtn:active {
+  transform: scale(0.98);
+}
+
+.btnIconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.mapBtn:hover .btnIconWrap {
+  transform: rotate(-12deg);
+}
+
+.whatsappBtn:hover .btnIconWrap {
+  transform: scale(1.1);
+}
+
+.btnLabel {
+  letter-spacing: 0;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .storeCard {
+    grid-template-columns: 1fr !important;
+  }
+
+  :global([dir="rtl"]) .imageSide {
+    order: 1;
+  }
+
+  :global([dir="rtl"]) .contentSide {
+    order: 2;
+  }
+
+  .imageSide {
+    min-height: 340px;
+    height: 340px;
+  }
+
+  .contentSide {
+    padding: 24px 18px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding: 24px 0 40px;
+  }
+
+  .container {
+    padding: 0 14px;
+  }
+
+  .storeCard {
+    border-radius: 20px;
+  }
+
+  .imageSide {
+    min-height: 240px;
+    height: 240px;
+  }
+
+  .contentSide {
+    padding: 20px 14px;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .infoItem {
+    padding: 10px 14px;
+    font-size: 12.5px;
+    border-radius: 12px;
+  }
+
+  .actionRow {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .mapBtn,
+  .whatsappBtn {
+    height: 42px;
+    padding: 0 10px;
+    font-size: 12px;
+    border-radius: 12px;
+    gap: 6px;
+  }
+}
+
