@@ -43,6 +43,8 @@ export const StoreSection: React.FC = () => {
               fill
               sizes="(max-width: 960px) 100vw, 680px"
               className={styles.storeImage}
+              unoptimized={true}
+              decoding="async"
             />
           </div>
 

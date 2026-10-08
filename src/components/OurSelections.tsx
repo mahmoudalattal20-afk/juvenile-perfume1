@@ -71,6 +71,9 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(({
   onToggleWishlist,
   onAddToCart,
 }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const isEager = idx < 4;
+
   return (
     <div
       className={styles.card}
@@ -78,6 +81,14 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(({
     >
       {/* Studio Presentation Stage */}
       <div className={styles.imageContainer}>
+        {/* Luxury Shimmer Placeholder Skeleton */}
+        <div
+          className={`${styles.imagePlaceholder} ${
+            imageLoaded ? styles.imagePlaceholderHidden : ""
+          }`}
+          aria-hidden="true"
+        />
+
         {/* Floating Wishlist Button */}
         <button
           type="button"
@@ -110,8 +121,14 @@ const ProductCard: React.FC<ProductCardProps> = React.memo(({
               alt={prod.name}
               fill
               sizes="(max-width: 768px) 180px, (max-width: 1080px) 210px, 240px"
-              loading="lazy"
-              className={styles.productImage}
+              loading={isEager ? "eager" : "lazy"}
+              priority={isEager}
+              unoptimized={true}
+              decoding="async"
+              onLoad={() => setImageLoaded(true)}
+              className={`${styles.productImage} ${
+                imageLoaded ? styles.productImageLoaded : ""
+              }`}
               draggable={false}
             />
           </div>
@@ -198,6 +215,23 @@ export const OurSelections: React.FC<OurSelectionsProps> = React.memo(({ onAddTo
   const [animatingIds, setAnimatingIds] = useState<Record<string, boolean>>({});
   const [selectedClassification, setSelectedClassification] = useState<SelectionFilterType>("all");
   const [isCategoryTransitioning, setIsCategoryTransitioning] = useState(false);
+  const [isSectionVisible, setIsSectionVisible] = useState(true);
+
+  // Viewport Auto-Pause: Stops marquee loop when out of viewport to eliminate GPU drop frames
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSectionVisible(entry.isIntersecting);
+      },
+      { threshold: 0.01, rootMargin: "180px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleCardClick = useCallback((prodId: string, e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest("button")) return;
@@ -508,7 +542,9 @@ export const OurSelections: React.FC<OurSelectionsProps> = React.memo(({ onAddTo
             </div>
           ) : (
             <div
-              className={`${styles.marqueeWrapper} ${isCategoryTransitioning ? styles.marqueeTransitioning : ""}`}
+              className={`${styles.marqueeWrapper} ${isCategoryTransitioning ? styles.marqueeTransitioning : ""} ${
+                !isSectionVisible ? styles.marqueePaused : ""
+              }`}
               aria-label="Continuous Product Showcases"
             >
               {/* =========================================

@@ -9,6 +9,7 @@ import styles from "./VideoShowcase.module.css";
 
 interface VideoItem {
   src: string;
+  poster?: string;
   label: string;
   title: string;
 }
@@ -19,8 +20,8 @@ const defaultContent = {
     title: "قصص تُروى بالعطر",
     subtitle: "اكتشف الحكايات والإلهام وراء كل عطر.",
     videos: [
-      { src: "/videos/showcase-1.mp4", label: "المجموعة الملكية", title: "ROYAL COLLECTION" },
-      { src: "/videos/showcase-2.mp4", label: "إصدار 2026", title: "SIGNATURE EDITION" },
+      { src: "/uploads/videos/video_1791364703195_7c3eb85f0f13.mp4", label: "المجموعة الملكية", title: "ROYAL COLLECTION" },
+      { src: "/uploads/videos/video_1791364718433_725aa05d2965.mp4", label: "إصدار 2026", title: "SIGNATURE EDITION" },
     ] as VideoItem[],
   },
   en: {
@@ -28,8 +29,8 @@ const defaultContent = {
     title: "BEYOND THE BOTTLE",
     subtitle: "Discover the stories that shape each fragrance.",
     videos: [
-      { src: "/videos/showcase-1.mp4", label: "Royal Collection", title: "ROYAL COLLECTION" },
-      { src: "/videos/showcase-2.mp4", label: "2026 Edition", title: "SIGNATURE EDITION" },
+      { src: "/uploads/videos/video_1791364703195_7c3eb85f0f13.mp4", label: "Royal Collection", title: "ROYAL COLLECTION" },
+      { src: "/uploads/videos/video_1791364718433_725aa05d2965.mp4", label: "2026 Edition", title: "SIGNATURE EDITION" },
     ] as VideoItem[],
   },
 };
@@ -56,6 +57,7 @@ export function VideoShowcase() {
   const videos: VideoItem[] = (cmsVideos && cmsVideos.length > 0)
     ? cmsVideos.map((v) => ({
         src: v.src,
+        poster: v.poster,
         label: locale === "ar" ? (v.labelAr || v.labelEn || "") : (v.labelEn || v.labelAr || ""),
         title: locale === "ar" ? (v.titleAr || v.titleEn || "") : (v.titleEn || v.titleAr || ""),
       }))
@@ -68,6 +70,7 @@ export function VideoShowcase() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [mutedState, setMutedState] = useState<Record<number, boolean>>({});
   const [isPlaying, setIsPlaying] = useState<Record<number, boolean>>({});
+  const [videoReady, setVideoReady] = useState<Record<number, boolean>>({});
 
   const isVideoPlaying = (idx: number) => isPlaying[idx] !== undefined ? isPlaying[idx] : true;
   const isVideoMuted = (idx: number) => mutedState[idx] !== undefined ? mutedState[idx] : true;
@@ -83,6 +86,7 @@ export function VideoShowcase() {
         playPromise
           .then(() => {
             setIsPlaying((prev) => ({ ...prev, [idx]: true }));
+            setVideoReady((prev) => ({ ...prev, [idx]: true }));
           })
           .catch(() => {
             // Retry muted if initial play had audio policy restriction
@@ -93,7 +97,7 @@ export function VideoShowcase() {
     });
   }, []);
 
-  // Play when section is in viewport, pause when out of viewport to save resources
+  // Preload and play when approaching viewport (320px lead time for instant play)
   useEffect(() => {
     const el = sectionRef.current;
     if (!el || typeof IntersectionObserver === "undefined") return;
@@ -110,7 +114,7 @@ export function VideoShowcase() {
           });
         }
       },
-      { threshold: 0.1, rootMargin: "60px 0px" }
+      { threshold: 0.05, rootMargin: "320px 0px" }
     );
 
     observer.observe(el);
@@ -171,6 +175,14 @@ export function VideoShowcase() {
               tabIndex={0}
               aria-label={`${item.title} - ${isVideoPlaying(idx) ? "Pause" : "Play"}`}
             >
+              {/* Video Skeleton / Loading Placeholder */}
+              <div
+                className={`${styles.videoSkeleton} ${
+                  videoReady[idx] ? styles.videoSkeletonHidden : ""
+                }`}
+                aria-hidden="true"
+              />
+
               {/* Video Element with guaranteed autoplay attributes */}
               <video
                 ref={(el) => {
@@ -180,15 +192,23 @@ export function VideoShowcase() {
                     el.defaultMuted = true;
                   }
                 }}
-                className={styles.video}
-                src={item.src}
+                className={`${styles.video} ${videoReady[idx] ? styles.videoLoaded : ""}`}
+                src={item.src.includes("#") ? item.src : `${item.src}#t=0.001`}
+                poster={item.poster || undefined}
                 autoPlay
                 muted
                 loop
                 playsInline
-                preload="none"
+                preload="metadata"
+                onLoadedData={() => {
+                  setVideoReady((prev) => ({ ...prev, [idx]: true }));
+                }}
+                onCanPlay={() => {
+                  setVideoReady((prev) => ({ ...prev, [idx]: true }));
+                }}
                 onPlay={() => {
                   setIsPlaying((prev) => ({ ...prev, [idx]: true }));
+                  setVideoReady((prev) => ({ ...prev, [idx]: true }));
                 }}
                 onPause={() => {
                   setIsPlaying((prev) => ({ ...prev, [idx]: false }));

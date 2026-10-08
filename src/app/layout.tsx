@@ -8,6 +8,7 @@ import { FlyAnimationProvider } from "@/context/FlyAnimationContext";
 import dynamic from "next/dynamic";
 import { DynamicTabManager } from "@/components/DynamicTabManager";
 import { PageTransition } from "@/components/PageTransition";
+import { SitePreloader } from "@/components/SitePreloader";
 import { Locale, Direction } from "@/i18n/translations";
 import "./globals.css";
 
@@ -112,6 +113,7 @@ export default async function RootLayout({
       </head>
       <body>
         <LanguageProvider initialLocale={initialLocale}>
+          <SitePreloader />
           <CMSProvider>
             <CartProvider>
               <FlyAnimationProvider>

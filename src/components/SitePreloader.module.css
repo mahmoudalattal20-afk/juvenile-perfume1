@@ -1,31 +1,32 @@
 /* =========================================
-   JUVENILE HAUTE PARFUMERIE — 2026 OFFICIAL LOGO PULSE & ORBIT PRELOADER
-   Clean, Pure White, Restful Luxury Experience
+   JUVENILE HAUTE PARFUMERIE — 2026 LUXURY SITE PRELOADER
+   Clean, Pure White, Restful Parisian Luxury Experience
    ========================================= */
 
 .preloaderOverlay {
   position: fixed;
   inset: 0;
-  z-index: 99999;
+  z-index: 999999;
   background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.8s ease;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.7s ease;
   will-change: opacity, transform;
   pointer-events: auto;
   user-select: none;
+  cursor: pointer;
 }
 
 .preloaderHidden {
-  opacity: 0;
-  transform: scale(1.02);
-  visibility: hidden;
-  pointer-events: none;
+  opacity: 0 !important;
+  transform: scale(1.02) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Stage */
@@ -54,15 +55,15 @@
   padding: 24px;
 }
 
-/* Center Logo Container that pulses and breathes smoothly at 120 FPS */
+/* Center Logo Container with Breathing Animation */
 .logoPulseWrap {
   position: relative;
-  width: 240px;
-  height: 70px;
+  width: 220px;
+  height: 65px;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: logoPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+  animation: logoPulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
   will-change: transform, opacity;
   transform: translateZ(0);
 }
@@ -70,35 +71,35 @@
 .logoPulseWrap::after {
   content: "";
   position: absolute;
-  inset: -12px -24px;
-  background: radial-gradient(ellipse at center, rgba(197, 168, 128, 0.25) 0%, rgba(197, 168, 128, 0) 72%);
+  inset: -14px -28px;
+  background: radial-gradient(ellipse at center, rgba(197, 168, 128, 0.22) 0%, rgba(197, 168, 128, 0) 70%);
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
-  animation: glowPulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+  animation: glowPulse 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
   will-change: transform, opacity;
   transform: translateZ(0);
 }
 
 @keyframes logoPulse {
   0% {
-    opacity: 0.35;
-    transform: scale(0.96) translateZ(0);
+    opacity: 0.6;
+    transform: scale(0.97) translateZ(0);
   }
   100% {
     opacity: 1;
-    transform: scale(1.03) translateZ(0);
+    transform: scale(1.02) translateZ(0);
   }
 }
 
 @keyframes glowPulse {
   0% {
-    opacity: 0.15;
-    transform: scale(0.9) translateZ(0);
+    opacity: 0.2;
+    transform: scale(0.92) translateZ(0);
   }
   100% {
     opacity: 0.85;
-    transform: scale(1.1) translateZ(0);
+    transform: scale(1.08) translateZ(0);
   }
 }
 
@@ -109,11 +110,71 @@
   display: block;
 }
 
-@media (max-width: 640px) {
-  .logoPulseWrap {
-    width: 175px;
-    height: 52px;
-  }
+/* Sequential Poetic Brand Phrases Stage */
+.phraseStage {
+  margin-top: 22px;
+  height: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
 }
 
+.phraseText {
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2c2b29;
+  letter-spacing: 0.015em;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(5px);
+  transition: opacity 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.26s ease;
+  will-change: transform, opacity, filter;
+}
 
+:global([dir="ltr"]) .phraseText,
+:global([lang="en"]) .phraseText {
+  font-family: "Tenor Sans", var(--font-serif-luxury), serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #383734;
+}
+
+.phraseActive {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0px) !important;
+}
+
+.phraseExiting {
+  opacity: 0 !important;
+  transform: translateY(-10px) !important;
+  filter: blur(5px) !important;
+}
+
+@media (max-width: 640px) {
+  .logoPulseWrap {
+    width: 180px;
+    height: 54px;
+  }
+  .phraseStage {
+    margin-top: 18px;
+    height: 32px;
+  }
+  .phraseText {
+    font-size: 14.5px;
+  }
+  :global([dir="ltr"]) .phraseText,
+  :global([lang="en"]) .phraseText {
+    font-size: 13.5px;
+  }
+}

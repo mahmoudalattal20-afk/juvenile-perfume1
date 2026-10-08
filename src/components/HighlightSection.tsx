@@ -110,6 +110,8 @@ export const HighlightSection: React.FC = () => {
                     fill
                     sizes="(max-width: 860px) 50vw, 550px"
                     className={styles.cardImage}
+                    unoptimized={true}
+                    decoding="async"
                   />
                   <div className={styles.vignetteOverlay} />
                 </div>

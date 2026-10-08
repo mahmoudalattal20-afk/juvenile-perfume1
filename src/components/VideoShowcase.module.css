@@ -8,6 +8,8 @@
   padding: 80px 20px 36px;
   background: #0a0a0a;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
 }
 
 .container {
@@ -119,6 +121,36 @@
   opacity: 1;
 }
 
+/* Video Skeleton Placeholder */
+.videoSkeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #141414 0%, #202020 50%, #141414 100%);
+  background-size: 200% 200%;
+  animation: videoSkeletonShimmer 2.2s ease-in-out infinite;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+  pointer-events: none;
+}
+
+.videoSkeletonHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes videoSkeletonShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Video Element */
 .video {
   position: absolute;
@@ -127,6 +159,12 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.videoLoaded {
+  opacity: 1;
 }
 
 /* Gradient Overlay (always visible at bottom for text) */

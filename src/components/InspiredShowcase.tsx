@@ -112,6 +112,31 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
       });
     }, [isSearching, featuredItems, allInspiredItems, searchQuery, activeGender]);
 
+    // Category counts for badges
+    const categoryCounts = useMemo(() => {
+      let men = 0;
+      let women = 0;
+      let unisex = 0;
+      for (const item of allInspiredItems) {
+        if (item.gender === "men") men++;
+        else if (item.gender === "women") women++;
+        else if (item.gender === "unisex") unisex++;
+      }
+      return {
+        all: allInspiredItems.length,
+        men,
+        women,
+        unisex,
+      };
+    }, [allInspiredItems]);
+
+    const filterTabs = useMemo(() => [
+      { id: "all" as const, labelAr: "الكل", labelEn: "All", count: categoryCounts.all },
+      { id: "men" as const, labelAr: "رجالي", labelEn: "Men", count: categoryCounts.men },
+      { id: "women" as const, labelAr: "نسائي", labelEn: "Women", count: categoryCounts.women },
+      { id: "unisex" as const, labelAr: "للجنسين", labelEn: "Unisex", count: categoryCounts.unisex },
+    ], [categoryCounts]);
+
     // Exactly 4 products displayed on homepage showcase (single row of 4 on desktop)
     const displayProducts = useMemo<InspiredPerfume[]>(() => {
       return filteredMatches.slice(0, 4);
@@ -306,15 +331,15 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
           <div className={styles.controlsWrapper}>
             <div className={styles.searchBarWrap}>
               <span className={`${styles.searchIcon} ${isRtl ? styles.searchIconRtl : styles.searchIconLtr}`}>
-                <Search size={17} />
+                <Search size={16} strokeWidth={2} />
               </span>
               <input
                 type="text"
                 className={styles.searchInput}
                 placeholder={
                   isAr
-                    ? "دور باسم العطر… مثال: سوفاج، ليبر، باكارا روج"
-                    : "Search by fragrance name… e.g. Sauvage, Libre, Baccarat Rouge"
+                    ? "ابحث باسم العطر أو الماركة… مثال: سوفاج، ليبر، باكارا روج"
+                    : "Search by fragrance name or inspiration… e.g. Sauvage, Libre, Baccarat Rouge"
                 }
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -327,41 +352,33 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
                   title={isAr ? "مسح البحث" : "Clear search"}
                   aria-label="Clear search"
                 >
-                  <X size={15} />
+                  <X size={14} strokeWidth={2.2} />
                 </button>
               )}
             </div>
 
-            {/* Category Filter Chips */}
-            <div className={styles.filterChips}>
-              <button
-                type="button"
-                className={`${styles.chipBtn} ${activeGender === "all" ? styles.chipBtnActive : ""}`}
-                onClick={() => setActiveGender("all")}
-              >
-                <span>{isAr ? "الكل" : "All"}</span>
-              </button>
-              <button
-                type="button"
-                className={`${styles.chipBtn} ${activeGender === "men" ? styles.chipBtnActive : ""}`}
-                onClick={() => setActiveGender("men")}
-              >
-                <span>{isAr ? "رجالي" : "Men"}</span>
-              </button>
-              <button
-                type="button"
-                className={`${styles.chipBtn} ${activeGender === "women" ? styles.chipBtnActive : ""}`}
-                onClick={() => setActiveGender("women")}
-              >
-                <span>{isAr ? "نسائي" : "Women"}</span>
-              </button>
-              <button
-                type="button"
-                className={`${styles.chipBtn} ${activeGender === "unisex" ? styles.chipBtnActive : ""}`}
-                onClick={() => setActiveGender("unisex")}
-              >
-                <span>{isAr ? "للجميع" : "Unisex"}</span>
-              </button>
+            {/* Category Filter Segmented Control */}
+            <div
+              className={styles.filterChips}
+              role="tablist"
+              aria-label={isAr ? "تصنيفات العطور" : "Fragrance categories"}
+            >
+              {filterTabs.map((tab) => {
+                const isActive = activeGender === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`${styles.chipBtn} ${isActive ? styles.chipBtnActive : ""}`}
+                    onClick={() => setActiveGender(tab.id)}
+                  >
+                    <span className={styles.chipLabel}>{isAr ? tab.labelAr : tab.labelEn}</span>
+                    {tab.count > 0 && <span className={styles.chipCount}>{tab.count}</span>}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Results Meta */}
@@ -510,25 +527,17 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
                           className={`${styles.addToCartBtn} ${isItemAdded ? styles.addToCartBtnAdded : ""}`}
                           aria-label={isAr ? `إضافة ${item.arabicName} إلى السلة` : `Add ${item.name} to cart`}
                         >
-                          <span className={styles.btnInner}>
-                            {isItemAdded ? (
-                              <span className={styles.btnSuccessWrap}>
-                                <Check size={13} strokeWidth={2.4} className={styles.btnIcon} />
-                                <span className={styles.btnText}>{isAr ? "تمت الإضافة" : "Added"}</span>
-                              </span>
-                            ) : (
-                              <span className={styles.rollingContainer}>
-                                <span className={styles.rollPrimary}>
-                                  <ShoppingBag size={13} strokeWidth={2} className={styles.btnIcon} />
-                                  <span className={styles.btnText}>{isAr ? "أضف للسلة" : "Add to Cart"}</span>
-                                </span>
-                                <span className={styles.rollSecondary} aria-hidden="true">
-                                  <span className={styles.btnText}>{isAr ? "أضف للسلة" : "Add to Cart"}</span>
-                                  <ArrowUpRight size={13} strokeWidth={2.4} className={styles.arrowIcon} />
-                                </span>
-                              </span>
-                            )}
-                          </span>
+                          {isItemAdded ? (
+                            <span className={styles.btnSuccessWrap}>
+                              <Check size={13} strokeWidth={2.4} className={styles.btnIcon} />
+                              <span className={styles.btnText}>{isAr ? "تمت الإضافة" : "Added"}</span>
+                            </span>
+                          ) : (
+                            <span className={styles.btnContent}>
+                              <span className={styles.btnText}>{isAr ? "إضافة للسلة" : "Add to Cart"}</span>
+                              <ShoppingBag size={13.5} strokeWidth={1.8} className={styles.btnIcon} />
+                            </span>
+                          )}
                         </button>
                       </div>
                     </div>
@@ -538,11 +547,19 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
             )}
           </div>
 
-          {/* Simple Clean Explore All Button */}
+          {/* Luxury Explore All CTA Button */}
           <div className={styles.footerCtaWrap}>
             <Link href={exploreTarget.href} className={styles.footerExploreBtn}>
-              <span>{isAr ? exploreTarget.labelAr : exploreTarget.labelEn}</span>
-              {isRtl ? <ArrowLeft size={14} /> : <ArrowRight size={14} />}
+              <span className={styles.footerExploreText}>
+                {isAr ? exploreTarget.labelAr : exploreTarget.labelEn}
+              </span>
+              <span className={styles.footerExploreIconWrap}>
+                {isRtl ? (
+                  <ArrowLeft size={12.5} strokeWidth={2} className={styles.footerExploreIcon} />
+                ) : (
+                  <ArrowRight size={12.5} strokeWidth={2} className={styles.footerExploreIcon} />
+                )}
+              </span>
             </Link>
           </div>
         </div>

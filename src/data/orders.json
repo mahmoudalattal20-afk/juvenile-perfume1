@@ -30,7 +30,7 @@
         "name": "فينترو",
         "price": 1700,
         "quantity": 2,
-        "image": "/products/ventro.png",
+        "image": "/products/ventro.webp",
         "type": "خلاصة عطر نقي"
       },
       {
@@ -38,7 +38,7 @@
         "name": "LIQUID GOLD",
         "price": 1900,
         "quantity": 2,
-        "image": "/products/liquid-gold.png",
+        "image": "/products/liquid-gold.webp",
         "type": "Gold Premium Collection"
       }
     ],

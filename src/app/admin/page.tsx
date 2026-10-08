@@ -1239,8 +1239,8 @@ export default function FinexyAdminDashboard() {
       formattedPrice: { ar: "1,850 ج.م", en: "1,850 LE" },
       price50ml: 1250,
       formattedPrice50ml: { ar: "1,250 ج.م", en: "1,250 LE" },
-      image: "/products/half.png",
-      gallery: ["/products/half.png"],
+      image: "/products/half-million.webp",
+      gallery: ["/products/half-million.webp"],
       rating: 4.9,
       reviewsCount: 1,
       pyramid: {

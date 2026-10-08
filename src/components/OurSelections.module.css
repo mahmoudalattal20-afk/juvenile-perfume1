@@ -9,6 +9,8 @@
   background: #ffffff;
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
 }
 
 .container {
@@ -217,6 +219,7 @@
   gap: 20px;
   width: max-content;
   will-change: transform;
+  contain: layout paint;
   animation: marqueeLoopDesktop 60s linear infinite;
 }
 
@@ -227,6 +230,7 @@
   gap: 12px;
   width: max-content;
   will-change: transform;
+  contain: layout paint;
   animation: marqueeLoopRow1 46s linear infinite;
 }
 
@@ -237,6 +241,7 @@
   gap: 12px;
   width: max-content;
   will-change: transform;
+  contain: layout paint;
   animation: marqueeLoopRow2 42s linear infinite;
 }
 
@@ -245,6 +250,14 @@
 .marqueeRow:hover .marqueeTrackRow1,
 .marqueeRow:hover .marqueeTrackRow2 {
   animation-play-state: paused;
+}
+
+/* Viewport off-screen freeze — Frees 100% GPU resources during page scroll */
+.marqueePaused .marqueeTrackDesktop,
+.marqueePaused .marqueeTrackRow1,
+.marqueePaused .marqueeTrackRow2 {
+  animation-play-state: paused !important;
+  will-change: auto !important;
 }
 
 /* Keyframes: 0% -> -50% */
@@ -340,6 +353,34 @@
   border: none;
 }
 
+/* Luxury Skeleton Placeholder */
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #f8f9fa 0%, #ebebeb 50%, #f8f9fa 100%);
+  background-size: 200% 100%;
+  animation: luxuryShimmer 2.2s infinite ease-in-out;
+  opacity: 1;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.imagePlaceholderHidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes luxuryShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 .bottleFloatWrap {
   position: relative;
   width: 100%;
@@ -348,6 +389,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  z-index: 2;
 }
 
 .productImage {
@@ -356,10 +398,15 @@
   object-fit: contain !important;
   object-position: center;
   transform: scale(0.92);
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transition: opacity 0.42s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform-origin: center center;
+}
+
+.productImageLoaded {
+  opacity: 1 !important;
 }
 
 .imageLink {

@@ -97,6 +97,7 @@ export interface CMSMuskPageConfig {
 export interface CMSEditorialVideo {
   id: string;
   src: string;
+  poster?: string;
   labelAr?: string;
   labelEn?: string;
   titleAr?: string;

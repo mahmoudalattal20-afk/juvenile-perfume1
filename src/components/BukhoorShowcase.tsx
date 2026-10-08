@@ -394,6 +394,8 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
                           fill
                           sizes="(max-width: 768px) 50vw, (max-width: 1080px) 33vw, 25vw"
                           className={styles.productImage}
+                          unoptimized={true}
+                          decoding="async"
                           draggable={false}
                         />
                       </div>

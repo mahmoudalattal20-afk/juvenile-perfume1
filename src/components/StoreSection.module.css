@@ -9,6 +9,8 @@
   background: #ffffff;
   color: #0a0f1d;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }
 
 .container {
