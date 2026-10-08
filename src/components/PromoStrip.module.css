@@ -101,6 +101,15 @@
   transition: color 0.2s ease;
 }
 
+:global([dir="rtl"]) .text,
+:global([lang="ar"]) .text {
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0 !important;
+  line-height: 1.4;
+}
+
 .itemWrapper:hover .text {
   color: #0750cd;
 }

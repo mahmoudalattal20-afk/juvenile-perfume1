@@ -48,13 +48,15 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
 
   const bukhoorItems: CMSBukhoorItem[] = React.useMemo(() => {
     const matched: CMSBukhoorItem[] = [];
-    const featuredSet = new Set(featuredIds);
+    const seenIds = new Set<string>();
 
-    for (const [id, prod] of Object.entries(allProducts)) {
-      const cls = getProductClassification(prod);
-      if (cls === "bukhoor" && featuredSet.has(id)) {
+    // 1. First add items in the order of featuredIds
+    for (const featId of featuredIds) {
+      const prod = allProducts[featId];
+      if (prod && getProductClassification(prod) === "bukhoor" && !seenIds.has(featId)) {
+        seenIds.add(featId);
         matched.push({
-          id,
+          id: featId,
           nameAr: prod.arabicName || prod.name,
           nameEn: prod.name,
           subAr: prod.tagline?.ar || "عود مروكي معطر",
@@ -68,6 +70,7 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
       }
     }
 
+    // 2. Fallback if any custom items exist in legacy bukhoorConfig
     if (matched.length > 0) return matched;
 
     return bukhoorConfig.items && bukhoorConfig.items.length > 0

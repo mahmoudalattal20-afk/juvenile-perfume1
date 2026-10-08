@@ -74,6 +74,14 @@
   transition: color 0.2s ease;
 }
 
+:global([dir="rtl"]) .marqueeItem,
+:global([lang="ar"]) .marqueeItem {
+  font-family: var(--font-readex), 'Readex Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-weight: 500;
+}
+
 .marqueeItem:hover {
   color: #0750cd;
 }
