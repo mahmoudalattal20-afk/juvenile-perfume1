@@ -102,37 +102,22 @@ export async function middleware(req: NextRequest) {
     const gateCookie = req.cookies.get("juvenile_gate_clearance")?.value;
     const hasGatePass = gateCookie === GATEWAY_TOKEN;
 
-    // 3. Stealth Cloaking for /admin (Returns Fake 404 for any uninvited visitor)
-    if (pathname === "/admin" || pathname === "/admin/") {
-      if (!isVerifiedAdmin && !hasGatePass) {
-        // Return 404 Not Found: Completely hides the dashboard existence from unauthorized visitors
-        const notFoundUrl = req.nextUrl.clone();
-        notFoundUrl.pathname = "/_not-found";
-        return NextResponse.rewrite(notFoundUrl, { status: 404 });
-      }
-    }
-
-    // 4. Cloaking & Protection for Admin API routes
+    // 3. Admin & Auth Protection
     if (pathname.startsWith("/api/admin/")) {
-      // If it's the auth endpoint, require at least the gate pass or an existing session
-      if (pathname.startsWith("/api/admin/auth")) {
-        if (!isVerifiedAdmin && !hasGatePass) {
-          return NextResponse.json({ success: false, error: "Not Found" }, { status: 404 });
-        }
-      } else if (!pathname.startsWith("/api/admin/logout")) {
-        // Allow public GET for store content so the storefront and CMS provider can load latest products
-        if (pathname === "/api/admin/content" && req.method === "GET") {
-          // Content read-only is allowed; POST/writes are strictly protected by isAdmin(req) inside route
-        } else if (!isVerifiedAdmin) {
-          // For all other admin data endpoints and write mutations, require full verified admin session
-          return NextResponse.json(
-            {
-              success: false,
-              error: "تم رفض الطلب: الوصول غير مصرح به (Unauthorized Access Blocked)",
-            },
-            { status: 401 }
-          );
-        }
+      // Allow auth endpoint and public content GET
+      if (pathname.startsWith("/api/admin/auth") || pathname.startsWith("/api/admin/logout")) {
+        // Handled by route with rate limiting & secure credentials
+      } else if (pathname === "/api/admin/content" && req.method === "GET") {
+        // Content read-only is allowed; POST/writes are strictly protected by isAdmin(req) inside route
+      } else if (!isVerifiedAdmin) {
+        // For all other admin data endpoints and write mutations, require full verified admin session
+        return NextResponse.json(
+          {
+            success: false,
+            error: "تم رفض الطلب: الوصول غير مصرح به (Unauthorized Access Blocked)",
+          },
+          { status: 401 }
+        );
       }
     }
 

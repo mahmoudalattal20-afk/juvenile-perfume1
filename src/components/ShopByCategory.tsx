@@ -181,6 +181,8 @@ export function ShopByCategory({ onAddToCart }: Props) {
                     fill
                     sizes="(max-width: 768px) 50vw, 33vw"
                     className={styles.productImage}
+                    unoptimized={true}
+                    decoding="async"
                     draggable={false}
                   />
                 </Link>

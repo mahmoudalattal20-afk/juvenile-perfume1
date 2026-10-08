@@ -164,6 +164,8 @@ export const CommunityShowcase: React.FC = () => {
                       className={styles.cardImage}
                       loading="lazy"
                       draggable={false}
+                      unoptimized={true}
+                      decoding="async"
                     />
                   </div>
                 </div>

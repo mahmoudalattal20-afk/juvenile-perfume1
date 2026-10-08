@@ -260,6 +260,8 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
           priority
           sizes="100vw"
           className={styles.bannerBg}
+          unoptimized={true}
+          decoding="async"
         />
         <div className={styles.bannerOverlay} />
 

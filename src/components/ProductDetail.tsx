@@ -230,6 +230,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 className={styles.bottleImage}
+                unoptimized={true}
+                decoding="async"
               />
             </div>
           </div>
@@ -433,6 +435,8 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                       fill
                       sizes="(max-width: 768px) 50vw, 25vw"
                       style={{ objectFit: "cover" }}
+                      unoptimized={true}
+                      decoding="async"
                     />
                   </div>
                   <h3

@@ -308,10 +308,13 @@ function startCloudflareTunnel() {
 // 6. Interactive Keyboard Handler
 // ==========================================
 function setupKeyboardShortcuts() {
+  try {
+    process.stdin.resume();
+  } catch (e) {}
+
   if (process.stdin.isTTY) {
     try {
       process.stdin.setRawMode(true);
-      process.stdin.resume();
       process.stdin.setEncoding('utf8');
 
       process.stdin.on('data', (key) => {

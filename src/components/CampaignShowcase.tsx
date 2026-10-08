@@ -287,6 +287,8 @@ export const CampaignShowcase: React.FC<Props> = ({ onAddToCart }) => {
                         width={300}
                         height={340}
                         className={styles.productImage}
+                        unoptimized={true}
+                        decoding="async"
                         draggable={false}
                       />
                     </div>

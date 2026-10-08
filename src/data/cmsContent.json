@@ -49,6 +49,56 @@
     "agarwood-luban",
     "agarwood-anbar"
   ],
+  "bukhoorSection": {
+    "isEnabled": true,
+    "bannerImage": "/uploads/img_1791425465614_41315bc9dbfee1d2.jpg",
+    "bannerHeadlineAr": "حضورٌ مهيب. فخامة متناهية. أصالة خالدة.",
+    "bannerHeadlineEn": "Commanding. Refined. Timeless.",
+    "bannerSubtitleAr": "تعبيرٌ راقٍ عن نقاء العود الطبيعي المعطر — صُمم ليعيد صياغة المكان، والهيبة، والطقوس الفاخرة.",
+    "bannerSubtitleEn": "An elevated expression of pure oud — crafted to define space, presence, and ritual.",
+    "titleAr": "حضورٌ يُعيد صياغة المكان",
+    "titleEn": "PRESENCE, REDEFINED.",
+    "subtitleAr": "أرقى تشكيلات العود المعطر الطبيعي لتجربة استثنائية تأسر الحواس.",
+    "subtitleEn": "An elevated expression of pure oud — crafted to define space, presence, and ritual.",
+    "items": [
+      {
+        "id": "agarwood-rose",
+        "nameEn": "ROSE · SCENTED AGARWOOD",
+        "nameAr": "بخور العود المعطر بالورد",
+        "subEn": "Scented Agarwood",
+        "subAr": "عود مروكي معطر",
+        "priceEn": "LE 5,860.40",
+        "priceAr": "5,860.40 ج.م",
+        "priceRaw": 5860.4,
+        "image": "/products/agarwood-rose.png",
+        "isSoldOut": false
+      },
+      {
+        "id": "agarwood-luban",
+        "nameEn": "LUBAN · SCENTED AGARWOOD",
+        "nameAr": "بخور العود المعطر باللبان",
+        "subEn": "Scented Agarwood",
+        "subAr": "لبان حوجري ملكي وعود",
+        "priceEn": "LE 5,860.40",
+        "priceAr": "5,860.40 ج.م",
+        "priceRaw": 5860.4,
+        "image": "/products/agarwood-luban.png",
+        "isSoldOut": false
+      },
+      {
+        "id": "agarwood-anbar",
+        "nameEn": "ANBAR · SCENTED AGARWOOD",
+        "nameAr": "بخور العود المعطر بالعنبر",
+        "subEn": "Scented Agarwood",
+        "subAr": "عنبر ملكي وعود معتق",
+        "priceEn": "LE 5,860.40",
+        "priceAr": "5,860.40 ج.م",
+        "priceRaw": 5860.4,
+        "image": "/products/agarwood-anbar.png",
+        "isSoldOut": true
+      }
+    ]
+  },
   "muskPage": {
     "titleAr": "مجموعة المسك الفاخر",
     "titleEn": "EXCLUSIVE MUSK COLLECTION",
@@ -4305,5 +4355,5 @@
       "createdAt": "2026-10-07T07:09:48.401Z"
     }
   },
-  "lastUpdated": "2026-10-07T16:10:55.428Z"
+  "lastUpdated": "2026-10-08T02:11:15.226Z"
 }

@@ -160,6 +160,8 @@ export function CategoryPageClient({ slug }: Props) {
             priority
             sizes="100vw"
             className={styles.bannerBg}
+            unoptimized={true}
+            decoding="async"
           />
           <div className={styles.bannerOverlay} />
         </div>
@@ -263,6 +265,8 @@ export function CategoryPageClient({ slug }: Props) {
                       fill
                       sizes="(max-width: 860px) 50vw, (max-width: 1200px) 33vw, 25vw"
                       className={styles.productImg}
+                      unoptimized={true}
+                      decoding="async"
                     />
                   </Link>
 
