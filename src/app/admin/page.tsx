@@ -1064,21 +1064,44 @@ export default function FinexyAdminDashboard() {
     }
   }, [cmsData]);
 
-  // Auth check
+  // Auth check with resilient timeout
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => {
+      if (isMounted) {
+        setAuthStatus((prev) => (prev === "checking" ? "unauthenticated" : prev));
+      }
+    }, 2500);
+
     const checkAuth = async () => {
       try {
-        const res = await fetch("/api/admin/auth");
+        const res = await fetch("/api/admin/auth", {
+          signal: controller.signal,
+          cache: "no-store",
+        });
         const json = await res.json();
-        setAuthStatus(json.isAuthenticated ? "authenticated" : "unauthenticated");
-        if (json.isAuthenticated && json.user?.email) {
-          setAdminAccountEmail(json.user.email);
+        if (isMounted) {
+          clearTimeout(timeoutId);
+          setAuthStatus(json.isAuthenticated ? "authenticated" : "unauthenticated");
+          if (json.isAuthenticated && json.user?.email) {
+            setAdminAccountEmail(json.user.email);
+          }
         }
       } catch {
-        setAuthStatus("unauthenticated");
+        if (isMounted) {
+          clearTimeout(timeoutId);
+          setAuthStatus("unauthenticated");
+        }
       }
     };
     checkAuth();
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timeoutId);
+      controller.abort();
+    };
   }, []);
 
   const triggerToast = (msg: string) => {
@@ -1447,10 +1470,11 @@ export default function FinexyAdminDashboard() {
     }
   };
 
-  if (authStatus === "checking" || isLoading) {
+  // Checking Auth state
+  if (authStatus === "checking" || (authStatus === "authenticated" && isLoading)) {
     return (
       <div className={styles.adminGateWrapper} dir="rtl">
-        <div className={styles.adminGateCard} style={{ padding: "50px 36px" }}>
+        <div className={styles.adminGateCard} style={{ padding: "50px 36px", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <div className={styles.adminGateLogoWrapper}>
             <Image
               src="/logo.png"
@@ -1465,6 +1489,22 @@ export default function FinexyAdminDashboard() {
             <RefreshCw size={16} className={styles.spinIcon} style={{ color: "#0f172a" }} />
             <span>جاري التحقق من الصلاحيات الإدارية...</span>
           </div>
+          <button
+            type="button"
+            onClick={() => setAuthStatus("unauthenticated")}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#0750cd",
+              fontSize: 12,
+              fontWeight: 600,
+              cursor: "pointer",
+              textDecoration: "underline",
+              marginTop: 4,
+            }}
+          >
+            الانتقال المباشر لشاشة تسجيل الدخول
+          </button>
         </div>
       </div>
     );

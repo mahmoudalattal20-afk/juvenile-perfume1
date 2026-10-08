@@ -10,6 +10,8 @@
   overflow: hidden;
   content-visibility: auto;
   contain-intrinsic-size: auto 650px;
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
 .container {
@@ -274,6 +276,8 @@
 @media (max-width: 768px) {
   .section {
     padding: 56px 16px 44px;
+    margin-bottom: 0;
+    border-bottom: none;
   }
 
   .header {

@@ -11,6 +11,8 @@
   overflow: hidden;
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
+  margin-top: -1px;
+  border-top: none;
 }
 
 .container {
@@ -249,6 +251,8 @@
   .section {
     padding: 10px 0 50px;
     overflow: hidden;
+    margin-top: -1px;
+    border-top: none;
   }
 
   .header {

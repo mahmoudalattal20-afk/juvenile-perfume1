@@ -82,8 +82,11 @@ export default function Home() {
       <Header />
       <Hero />
       <OurSelections />
-      <VideoShowcase />
-      <HighlightSection />
+      {/* Seamless Dark Continuum (Video Showcase + Highlight Section) */}
+      <div style={{ backgroundColor: "#0a0a0a", width: "100%", position: "relative" }}>
+        <VideoShowcase />
+        <HighlightSection />
+      </div>
       <InspiredShowcase />
       <BukhoorShowcase />
       <StoreSection />
