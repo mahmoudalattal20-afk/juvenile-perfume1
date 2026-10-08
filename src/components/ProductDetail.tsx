@@ -20,7 +20,7 @@ import {
 import { useLanguage } from "@/context/LanguageContext";
 import { useCart } from "@/context/CartContext";
 import { useCMS } from "@/context/CMSContext";
-import { getProductById, PRODUCTS_CATALOG } from "@/data/products";
+import { getProductById, PRODUCTS_CATALOG, getProductClassification } from "@/data/products";
 import styles from "./ProductDetail.module.css";
 
 interface ProductDetailProps {
@@ -273,38 +273,59 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
               {product.description[locale]}
             </p>
 
-            {/* 5. Olfactory Notes Section (الهرم العطري والمكونات) */}
-            <div className={styles.editorialSection}>
-              <h3 className={styles.sectionHeading}>
-                {isAr ? "الهرم العطري والمكونات" : "OLFACTORY NOTES"}
-              </h3>
-              <div className={styles.notesTable}>
-                <div className={styles.notesRow}>
-                  <span className={styles.noteLevel}>
-                    {isAr ? "القمة العطرية" : "TOP NOTES"}
-                  </span>
-                  <span className={styles.noteDesc}>
-                    {product.pyramid.topNotes[locale]}
-                  </span>
+            {/* 5. Olfactory Notes Section (الهرم العطري والمكونات - للعطور فقط) */}
+            {(() => {
+              const classification = getProductClassification(product);
+              const isNonPerfume = classification === "bukhoor" || classification === "musk" || classification === "bodysplash";
+              const hasNotes =
+                !isNonPerfume &&
+                product.pyramid &&
+                (Boolean(product.pyramid.topNotes?.[locale]) ||
+                  Boolean(product.pyramid.heartNotes?.[locale]) ||
+                  Boolean(product.pyramid.baseNotes?.[locale]));
+
+              if (!hasNotes) return null;
+
+              return (
+                <div className={styles.editorialSection}>
+                  <h3 className={styles.sectionHeading}>
+                    {isAr ? "الهرم العطري والمكونات" : "OLFACTORY NOTES"}
+                  </h3>
+                  <div className={styles.notesTable}>
+                    {product.pyramid.topNotes?.[locale] && (
+                      <div className={styles.notesRow}>
+                        <span className={styles.noteLevel}>
+                          {isAr ? "القمة العطرية" : "TOP NOTES"}
+                        </span>
+                        <span className={styles.noteDesc}>
+                          {product.pyramid.topNotes[locale]}
+                        </span>
+                      </div>
+                    )}
+                    {product.pyramid.heartNotes?.[locale] && (
+                      <div className={styles.notesRow}>
+                        <span className={styles.noteLevel}>
+                          {isAr ? "القلب العطري" : "HEART NOTES"}
+                        </span>
+                        <span className={styles.noteDesc}>
+                          {product.pyramid.heartNotes[locale]}
+                        </span>
+                      </div>
+                    )}
+                    {product.pyramid.baseNotes?.[locale] && (
+                      <div className={styles.notesRow}>
+                        <span className={styles.noteLevel}>
+                          {isAr ? "القاعدة العطرية" : "BASE NOTES"}
+                        </span>
+                        <span className={styles.noteDesc}>
+                          {product.pyramid.baseNotes[locale]}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <div className={styles.notesRow}>
-                  <span className={styles.noteLevel}>
-                    {isAr ? "القلب العطري" : "HEART NOTES"}
-                  </span>
-                  <span className={styles.noteDesc}>
-                    {product.pyramid.heartNotes[locale]}
-                  </span>
-                </div>
-                <div className={styles.notesRow}>
-                  <span className={styles.noteLevel}>
-                    {isAr ? "القاعدة العطرية" : "BASE NOTES"}
-                  </span>
-                  <span className={styles.noteDesc}>
-                    {product.pyramid.baseNotes[locale]}
-                  </span>
-                </div>
-              </div>
-            </div>
+              );
+            })()}
 
             {/* 6. 3-Column Key Features Box */}
             <div className={styles.featuresBox}>

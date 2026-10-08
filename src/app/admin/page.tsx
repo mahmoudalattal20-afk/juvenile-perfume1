@@ -1365,38 +1365,89 @@ export default function FinexyAdminDashboard() {
         ? selectedCategoryFilter
         : "unisex";
 
+    const isBukhoor = initialCls === "bukhoor";
+    const isMusk = initialCls === "musk";
+    const isSplash = initialCls === "bodysplash";
+
+    const defaultName = isBukhoor
+      ? "NEW BUKHOOR AGARWOOD"
+      : isMusk
+      ? "NEW MUSK ELIXIR"
+      : isSplash
+      ? "NEW BODY SPLASH"
+      : "NEW JUVENILE FRAGRANCE";
+
+    const defaultArabicName = isBukhoor
+      ? "بخور عود فاخر جديد"
+      : isMusk
+      ? "مسك فاخر جديد"
+      : isSplash
+      ? "معطر جسم بادي سبلاش جديد"
+      : "عطر جوفينيل جديد";
+
+    const defaultCategory = isBukhoor
+      ? { ar: "بخور فاخر", en: "Luxury Bukhoor" }
+      : isMusk
+      ? { ar: "مجموعة المسك الفاخر", en: "Exclusive Musk Collection" }
+      : isSplash
+      ? { ar: "معطرات الجسم", en: "Body Splash" }
+      : { ar: "مجموعة العطور الفاخرة", en: "Luxury Atelier Collection" };
+
+    const defaultDesc = isBukhoor
+      ? { ar: "بخور عود طبيعي معطر فاخر بمزيج غني من أنقى الزيوت العطرية والعود المعتق لتجربة تأسر الحواس.", en: "Luxury scented natural agarwood with rich oriental oils for a captivating sensory experience." }
+      : isMusk
+      ? { ar: "مسك نقي فاخر بلمسة مخملية دافئة وثبات استثنائي يدوم لأيام.", en: "Pure luxury musk with a velvety warm touch and phenomenal longevity." }
+      : isSplash
+      ? { ar: "معطر جسم منعش برائحة جذابة ولمسة مخملية تمنحك الانتعاش والثبات طوال اليوم.", en: "Refreshing luxury body splash with a captivating scent and all-day freshness." }
+      : { ar: "عطر فاخر مصنوع بعناية فائقة من أنقى الخلاصات الطبيعية بثبات استثنائي يدوم لأيام.", en: "A bespoke luxury fragrance formulated with the purest natural essences and phenomenal longevity." };
+
     const newProd: ProductDetailData = {
       id: newId,
-      name: initialCls === "musk" ? "NEW MUSK ELIXIR" : "NEW JUVENILE FRAGRANCE",
-      arabicName: initialCls === "musk" ? "مسك فاخر جديد" : "عطر جوفينيل جديد",
-      category: {
-        ar: initialCls === "musk" ? "مجموعة المسك الفاخر" : "مجموعة العطور الفاخرة",
-        en: initialCls === "musk" ? "Exclusive Musk Collection" : "Luxury Atelier Collection",
-      },
+      name: defaultName,
+      arabicName: defaultArabicName,
+      category: defaultCategory,
       classification: initialCls,
       relatedProductIds: [],
-      concentration: { ar: "خلاصة عطر نقي • Extrait de Parfum", en: "Extrait de Parfum • Pure Extract" },
-      tagline: { ar: "توليفة نيش استثنائية تعكس الفخامة الفرنسية المعاصرة", en: "An exceptional niche composition embodying contemporary French luxury" },
-      description: { ar: "عطر فاخر مصنوع بعناية فائقة من أنقى الخلاصات الطبيعية بثبات استثنائي يدوم لأيام.", en: "A bespoke luxury fragrance formulated with the purest natural essences and phenomenal longevity." },
-      price: 1850,
-      formattedPrice: { ar: "1,850 ج.م", en: "1,850 LE" },
-      price50ml: 1250,
-      formattedPrice50ml: { ar: "1,250 ج.م", en: "1,250 LE" },
-      image: "/products/half-million.webp",
-      gallery: ["/products/half-million.webp"],
+      concentration: {
+        ar: isBukhoor ? "عود معطر طبيعي" : isSplash ? "معطر جسم فاخر" : "خلاصة عطر نقي • Extrait de Parfum",
+        en: isBukhoor ? "Natural Scented Agarwood" : isSplash ? "Body Splash Mist" : "Extrait de Parfum • Pure Extract",
+      },
+      tagline: {
+        ar: isBukhoor
+          ? "تعبير راقٍ عن نقاء العود الطبيعي المعطر"
+          : isMusk
+          ? "أنقى توليفات المسك الطبيعي الملكي"
+          : isSplash
+          ? "انتعاش مخملي يدوم طوال اليوم"
+          : "توليفة نيش استثنائية تعكس الفخامة الفرنسية المعاصرة",
+        en: "An exceptional luxury formulation",
+      },
+      description: defaultDesc,
+      price: isBukhoor ? 5860 : isSplash ? 650 : 1850,
+      formattedPrice: {
+        ar: isBukhoor ? "5,860 ج.م" : isSplash ? "650 ج.م" : "1,850 ج.م",
+        en: isBukhoor ? "5,860 LE" : isSplash ? "650 LE" : "1,850 LE",
+      },
+      price50ml: isBukhoor ? 3200 : isSplash ? 450 : 1250,
+      formattedPrice50ml: {
+        ar: isBukhoor ? "3,200 ج.م" : isSplash ? "450 ج.م" : "1,250 ج.م",
+        en: isBukhoor ? "3,200 LE" : isSplash ? "450 LE" : "1,250 LE",
+      },
+      image: isBukhoor ? "/products/agarwood-rose.png" : isMusk ? "/products/misk-tahara.webp" : "/products/half-million.webp",
+      gallery: [isBukhoor ? "/products/agarwood-rose.png" : isMusk ? "/products/misk-tahara.webp" : "/products/half-million.webp"],
       rating: 4.9,
       reviewsCount: 1,
       pyramid: {
-        topNotes: { ar: "برغموت، هيل، زعفران", en: "Bergamot, Cardamom, Saffron" },
-        heartNotes: { ar: "أخشاب الأرز، لافندر فرنسي", en: "Cedarwood, French Lavender" },
-        baseNotes: { ar: "عنبر أسود، فانيليا مدغشقر، مسك", en: "Black Amber, Madagascar Vanilla, Musk" },
+        topNotes: { ar: "", en: "" },
+        heartNotes: { ar: "", en: "" },
+        baseNotes: { ar: "", en: "" },
       },
       specs: {
         longevity: { ar: "ثبات هائل +24 ساعة", en: "Massive 24h+" },
         sillage: { ar: "فوحان قوي مميز", en: "Heavy Signature Sillage" },
         gender: { ar: "للجنسين", en: "Unisex" },
         season: { ar: "جميع الفصول", en: "All Seasons" },
-        origin: { ar: "صُنع في فرنسا", en: "Crafted in France" },
+        origin: { ar: isBukhoor ? "خشب عود طبيعي" : "صُنع في فرنسا", en: isBukhoor ? "Natural Agarwood" : "Crafted in France" },
       },
     };
     setEditingProductId(newId);
@@ -3592,20 +3643,37 @@ export default function FinexyAdminDashboard() {
                           </div>
                         </div>
 
-                        <div className={styles.catalogPyramidBox}>
-                          <div className={styles.pyramidRow}>
-                            <span className={styles.pyramidLabel}>المقدمة:</span>
-                            <span>{prod.pyramid.topNotes.ar}</span>
+                        {cls === "bukhoor" || cls === "musk" || cls === "bodysplash" ? (
+                          <div className={styles.catalogPyramidBox}>
+                            <div className={styles.pyramidRow} style={{ alignItems: "flex-start" }}>
+                              <span className={styles.pyramidLabel}>الوصف:</span>
+                              <span style={{ fontSize: 12, lineHeight: 1.4, color: "#334155" }}>
+                                {prod.description?.ar ? (
+                                  prod.description.ar.length > 80
+                                    ? `${prod.description.ar.slice(0, 80)}...`
+                                    : prod.description.ar
+                                ) : (
+                                  prod.tagline?.ar || "منتج فاخر"
+                                )}
+                              </span>
+                            </div>
                           </div>
-                          <div className={styles.pyramidRow}>
-                            <span className={styles.pyramidLabel}>قلب العطر:</span>
-                            <span>{prod.pyramid.heartNotes.ar}</span>
+                        ) : (
+                          <div className={styles.catalogPyramidBox}>
+                            <div className={styles.pyramidRow}>
+                              <span className={styles.pyramidLabel}>المقدمة:</span>
+                              <span>{prod.pyramid?.topNotes?.ar || "-"}</span>
+                            </div>
+                            <div className={styles.pyramidRow}>
+                              <span className={styles.pyramidLabel}>قلب العطر:</span>
+                              <span>{prod.pyramid?.heartNotes?.ar || "-"}</span>
+                            </div>
+                            <div className={styles.pyramidRow}>
+                              <span className={styles.pyramidLabel}>القاعدة الثابتة:</span>
+                              <span>{prod.pyramid?.baseNotes?.ar || "-"}</span>
+                            </div>
                           </div>
-                          <div className={styles.pyramidRow}>
-                            <span className={styles.pyramidLabel}>القاعدة الثابتة:</span>
-                            <span>{prod.pyramid.baseNotes.ar}</span>
-                          </div>
-                        </div>
+                        )}
 
                         {(() => {
                           const isFeatured = (draftData.featuredProductIds || DEFAULT_FEATURED_PRODUCT_IDS).includes(id);
@@ -6169,77 +6237,117 @@ export default function FinexyAdminDashboard() {
                 </div>
               </div>
 
-              {/* Pyramid */}
-              <div style={{ background: "#f8fafc", borderRadius: 16, padding: 18, border: "1px solid #edf0f5" }}>
-                <div style={{ fontSize: 13.5, fontWeight: 700, color: "#0750cd", marginBottom: 12 }}>
-                  مكونات وريحة العطر
-                </div>
-                <div className={styles.formGroup}>
-                  <label className={styles.label}>أول رشة بتشمها (افتتاحية العطر):</label>
-                  <input
-                    type="text"
-                    className={styles.cleanInput}
-                    value={editingProductDraft.pyramid.topNotes.ar}
-                    onChange={(e) =>
-                      setEditingProductDraft({
-                        ...editingProductDraft,
-                        pyramid: {
-                          ...editingProductDraft.pyramid,
-                          topNotes: { ...editingProductDraft.pyramid.topNotes, ar: e.target.value },
-                        },
-                      })
-                    }
-                  />
-                </div>
-                <div className={styles.formGroup} style={{ marginTop: 10 }}>
-                  <label className={styles.label}>ريحة العطر الأساسية (قلب العطر):</label>
-                  <input
-                    type="text"
-                    className={styles.cleanInput}
-                    value={editingProductDraft.pyramid.heartNotes.ar}
-                    onChange={(e) =>
-                      setEditingProductDraft({
-                        ...editingProductDraft,
-                        pyramid: {
-                          ...editingProductDraft.pyramid,
-                          heartNotes: { ...editingProductDraft.pyramid.heartNotes, ar: e.target.value },
-                        },
-                      })
-                    }
-                  />
-                </div>
-                <div className={styles.formGroup} style={{ marginTop: 10 }}>
-                  <label className={styles.label}>الريحة اللي بتثبت وتقعد معاك (قاعدة العطر):</label>
-                  <input
-                    type="text"
-                    className={styles.cleanInput}
-                    value={editingProductDraft.pyramid.baseNotes.ar}
-                    onChange={(e) =>
-                      setEditingProductDraft({
-                        ...editingProductDraft,
-                        pyramid: {
-                          ...editingProductDraft.pyramid,
-                          baseNotes: { ...editingProductDraft.pyramid.baseNotes, ar: e.target.value },
-                        },
-                      })
-                    }
-                  />
-                </div>
-              </div>
+              {/* Pyramid & Description */}
+              {(() => {
+                const currentCls = editingProductDraft.classification || getProductClassification(editingProductDraft);
+                const isNonPerfume = currentCls === "bukhoor" || currentCls === "musk" || currentCls === "bodysplash";
+                const descLabel =
+                  currentCls === "bukhoor"
+                    ? "وصف البخور الذي يظهر للزبون في المتجر:"
+                    : currentCls === "musk"
+                    ? "وصف المسك الذي يظهر للزبون في المتجر:"
+                    : currentCls === "bodysplash"
+                    ? "وصف البادي سبلاش الذي يظهر للزبون في المتجر:"
+                    : "وصف العطر الذي يظهر للزبون في المتجر:";
 
-              <div className={styles.formGroup}>
-                <label className={styles.label}>وصف العطر اللي بيظهر للزبون في الموقع:</label>
-                <textarea
-                  className={styles.cleanTextarea}
-                  value={editingProductDraft.description.ar}
-                  onChange={(e) =>
-                    setEditingProductDraft({
-                      ...editingProductDraft,
-                      description: { ...editingProductDraft.description, ar: e.target.value },
-                    })
-                  }
-                />
-              </div>
+                return (
+                  <>
+                    {!isNonPerfume && (
+                      <div style={{ background: "#f8fafc", borderRadius: 16, padding: 18, border: "1px solid #edf0f5" }}>
+                        <div style={{ fontSize: 13.5, fontWeight: 700, color: "#0750cd", marginBottom: 12 }}>
+                          مكونات وريحة العطر (الهرم العطري)
+                        </div>
+                        <div className={styles.formGroup}>
+                          <label className={styles.label}>أول رشة بتشمها (افتتاحية العطر):</label>
+                          <input
+                            type="text"
+                            className={styles.cleanInput}
+                            placeholder="مثال: برغموت، زعفران، هيل"
+                            value={editingProductDraft.pyramid?.topNotes?.ar || ""}
+                            onChange={(e) =>
+                              setEditingProductDraft({
+                                ...editingProductDraft,
+                                pyramid: {
+                                  ...editingProductDraft.pyramid,
+                                  topNotes: { ...(editingProductDraft.pyramid?.topNotes || {}), ar: e.target.value, en: editingProductDraft.pyramid?.topNotes?.en || "" },
+                                  heartNotes: editingProductDraft.pyramid?.heartNotes || { ar: "", en: "" },
+                                  baseNotes: editingProductDraft.pyramid?.baseNotes || { ar: "", en: "" },
+                                },
+                              })
+                            }
+                          />
+                        </div>
+                        <div className={styles.formGroup} style={{ marginTop: 10 }}>
+                          <label className={styles.label}>ريحة العطر الأساسية (قلب العطر):</label>
+                          <input
+                            type="text"
+                            className={styles.cleanInput}
+                            placeholder="مثال: أخشاب الأرز، لافندر فرنسي"
+                            value={editingProductDraft.pyramid?.heartNotes?.ar || ""}
+                            onChange={(e) =>
+                              setEditingProductDraft({
+                                ...editingProductDraft,
+                                pyramid: {
+                                  ...editingProductDraft.pyramid,
+                                  heartNotes: { ...(editingProductDraft.pyramid?.heartNotes || {}), ar: e.target.value, en: editingProductDraft.pyramid?.heartNotes?.en || "" },
+                                  topNotes: editingProductDraft.pyramid?.topNotes || { ar: "", en: "" },
+                                  baseNotes: editingProductDraft.pyramid?.baseNotes || { ar: "", en: "" },
+                                },
+                              })
+                            }
+                          />
+                        </div>
+                        <div className={styles.formGroup} style={{ marginTop: 10 }}>
+                          <label className={styles.label}>الريحة اللي بتثبت وتقعد معاك (قاعدة العطر):</label>
+                          <input
+                            type="text"
+                            className={styles.cleanInput}
+                            placeholder="مثال: عنبر أسود، فانيليا مدغشقر، مسك"
+                            value={editingProductDraft.pyramid?.baseNotes?.ar || ""}
+                            onChange={(e) =>
+                              setEditingProductDraft({
+                                ...editingProductDraft,
+                                pyramid: {
+                                  ...editingProductDraft.pyramid,
+                                  baseNotes: { ...(editingProductDraft.pyramid?.baseNotes || {}), ar: e.target.value, en: editingProductDraft.pyramid?.baseNotes?.en || "" },
+                                  topNotes: editingProductDraft.pyramid?.topNotes || { ar: "", en: "" },
+                                  heartNotes: editingProductDraft.pyramid?.heartNotes || { ar: "", en: "" },
+                                },
+                              })
+                            }
+                          />
+                        </div>
+                      </div>
+                    )}
+
+                    {isNonPerfume && (
+                      <div style={{ background: "#f8fafc", borderRadius: 14, padding: "12px 16px", border: "1px dashed #cbd5e1", fontSize: 12.5, color: "#64748b" }}>
+                        ✨ ملاحظة: منتجات <strong>{currentCls === "bukhoor" ? "البخور" : currentCls === "musk" ? "المسك" : "البادي سبلاش"}</strong> لا تعتمد على الهرم العطري (افتتاحية/قلب/قاعدة)، ويتم تمييزها بالوصف الشامل أدناه فقط.
+                      </div>
+                    )}
+
+                    <div className={styles.formGroup}>
+                      <label className={styles.label}>{descLabel}</label>
+                      <textarea
+                        className={styles.cleanTextarea}
+                        rows={4}
+                        placeholder="اكتب وصفاً جذاباً ومفصلاً للمنتج..."
+                        value={editingProductDraft.description?.ar || ""}
+                        onChange={(e) =>
+                          setEditingProductDraft({
+                            ...editingProductDraft,
+                            description: {
+                              ...(editingProductDraft.description || {}),
+                              ar: e.target.value,
+                              en: editingProductDraft.description?.en || "",
+                            },
+                          })
+                        }
+                      />
+                    </div>
+                  </>
+                );
+              })()}
             </div>
 
             <div className={styles.modalFooter} style={{ justifyContent: "space-between" }}>
