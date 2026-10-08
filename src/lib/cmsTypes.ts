@@ -113,6 +113,33 @@ export interface CMSEditorialSection {
   subtitleEn?: string;
 }
 
+export interface CMSBukhoorItem {
+  id: string;
+  nameEn: string;
+  nameAr: string;
+  subEn: string;
+  subAr: string;
+  priceEn: string;
+  priceAr: string;
+  priceRaw: number;
+  image: string;
+  isSoldOut?: boolean;
+}
+
+export interface CMSBukhoorSection {
+  isEnabled?: boolean;
+  bannerImage?: string;
+  bannerHeadlineAr?: string;
+  bannerHeadlineEn?: string;
+  bannerSubtitleAr?: string;
+  bannerSubtitleEn?: string;
+  titleAr?: string;
+  titleEn?: string;
+  subtitleAr?: string;
+  subtitleEn?: string;
+  items?: CMSBukhoorItem[];
+}
+
 export interface SiteCMSData {
   heroConfig?: CMSHeroConfig;
   heroSlides: CMSHeroSlide[];
@@ -132,6 +159,7 @@ export interface SiteCMSData {
   };
   editorialSection?: CMSEditorialSection;
   editorialVideos?: CMSEditorialVideo[];
+  bukhoorSection?: CMSBukhoorSection;
   products: Record<string, ProductDetailData>;
   inspiredProducts?: Record<string, InspiredPerfume>;
   coupons?: Record<string, CMSCoupon>;
@@ -164,11 +192,65 @@ export const DEFAULT_FEATURED_INSPIRED_PRODUCT_IDS: string[] = [
   "le-male-elixir",
 ];
 
+export const DEFAULT_BUKHOOR_ITEMS: CMSBukhoorItem[] = [
+  {
+    id: "agarwood-rose",
+    nameEn: "ROSE · SCENTED AGARWOOD",
+    nameAr: "بخور العود المعطر بالورد",
+    subEn: "Scented Agarwood",
+    subAr: "عود مروكي معطر",
+    priceEn: "LE 5,860.40",
+    priceAr: "5,860.40 ج.م",
+    priceRaw: 5860.4,
+    image: "/products/agarwood-rose.png",
+    isSoldOut: false,
+  },
+  {
+    id: "agarwood-luban",
+    nameEn: "LUBAN · SCENTED AGARWOOD",
+    nameAr: "بخور العود المعطر باللبان",
+    subEn: "Scented Agarwood",
+    subAr: "لبان حوجري ملكي وعود",
+    priceEn: "LE 5,860.40",
+    priceAr: "5,860.40 ج.م",
+    priceRaw: 5860.4,
+    image: "/products/agarwood-luban.png",
+    isSoldOut: false,
+  },
+  {
+    id: "agarwood-anbar",
+    nameEn: "ANBAR · SCENTED AGARWOOD",
+    nameAr: "بخور العود المعطر بالعنبر",
+    subEn: "Scented Agarwood",
+    subAr: "عنبر ملكي وعود معتق",
+    priceEn: "LE 5,860.40",
+    priceAr: "5,860.40 ج.م",
+    priceRaw: 5860.4,
+    image: "/products/agarwood-anbar.png",
+    isSoldOut: true,
+  },
+];
+
+export const DEFAULT_BUKHOOR_SECTION: CMSBukhoorSection = {
+  isEnabled: true,
+  bannerImage: "/highlights/bukhoor-banner.jpg",
+  bannerHeadlineAr: "حضورٌ مهيب. فخامة متناهية. أصالة خالدة.",
+  bannerHeadlineEn: "Commanding. Refined. Timeless.",
+  bannerSubtitleAr: "تعبيرٌ راقٍ عن نقاء العود الطبيعي المعطر — صُمم ليعيد صياغة المكان، والهيبة، والطقوس الفاخرة.",
+  bannerSubtitleEn: "An elevated expression of pure oud — crafted to define space, presence, and ritual.",
+  titleAr: "حضورٌ يُعيد صياغة المكان",
+  titleEn: "PRESENCE, REDEFINED.",
+  subtitleAr: "أرقى تشكيلات العود المعطر الطبيعي لتجربة استثنائية تأسر الحواس.",
+  subtitleEn: "An elevated expression of pure oud — crafted to define space, presence, and ritual.",
+  items: DEFAULT_BUKHOOR_ITEMS,
+};
+
 export const DEFAULT_CMS_DATA: SiteCMSData = {
   featuredProductIds: DEFAULT_FEATURED_PRODUCT_IDS,
   featuredInspiredProductIds: DEFAULT_FEATURED_INSPIRED_PRODUCT_IDS,
   deletedProducts: [],
   deletedInspiredProducts: [],
+  bukhoorSection: DEFAULT_BUKHOOR_SECTION,
   muskPage: {
     titleAr: "مجموعة المسك الفاخر",
     titleEn: "EXCLUSIVE MUSK COLLECTION",

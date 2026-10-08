@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
               {/* Social Media Links */}
               <div className={styles.socialGroup}>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/juvenile_fragrance"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialBtn}
@@ -74,7 +74,7 @@ export const Footer: React.FC = () => {
                   <Instagram size={17} />
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/people/JuvenileFragrance/61586404154597/?mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialBtn}
@@ -83,7 +83,7 @@ export const Footer: React.FC = () => {
                   <Facebook size={17} />
                 </a>
                 <a
-                  href="https://tiktok.com"
+                  href="https://www.tiktok.com/@hussienahmed007?_r=1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialBtn}

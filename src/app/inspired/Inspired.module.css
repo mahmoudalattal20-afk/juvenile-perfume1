@@ -614,6 +614,22 @@
 }
 
 @media (max-width: 640px) {
+  .filterPillsRow {
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+
+  .filterPill {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 5px;
+  }
+
+  .filterPillCount {
+    padding: 1px 5px;
+    font-size: 10px;
+  }
+
   .bottlesGrid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;

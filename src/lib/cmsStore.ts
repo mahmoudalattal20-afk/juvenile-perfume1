@@ -59,6 +59,11 @@ export function getCMSData(): SiteCMSData {
           ? parsed.featuredInspiredProductIds
           : DEFAULT_CMS_DATA.featuredInspiredProductIds;
 
+      const bukhoorSection = {
+        ...DEFAULT_CMS_DATA.bukhoorSection,
+        ...(parsed.bukhoorSection || {}),
+      };
+
       return {
         ...DEFAULT_CMS_DATA,
         ...parsed,
@@ -69,6 +74,7 @@ export function getCMSData(): SiteCMSData {
         coupons,
         featuredProductIds,
         featuredInspiredProductIds,
+        bukhoorSection,
       };
     }
   } catch (err) {

@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useCartActions, useWishlist } from "@/context/CartContext";
+import { useCMS } from "@/context/CMSContext";
+import { DEFAULT_BUKHOOR_SECTION, DEFAULT_BUKHOOR_ITEMS, CMSBukhoorItem } from "@/lib/cmsTypes";
 import styles from "./BukhoorShowcase.module.css";
 
 function toTitleCase(str: string): string {
@@ -23,64 +25,19 @@ function toTitleCase(str: string): string {
   });
 }
 
-interface BukhoorItem {
-  id: string;
-  nameEn: string;
-  nameAr: string;
-  subEn: string;
-  subAr: string;
-  priceEn: string;
-  priceAr: string;
-  priceRaw: number;
-  image: string;
-  isSoldOut?: boolean;
-}
-
-const BUKHOOR_COLLECTION: BukhoorItem[] = [
-  {
-    id: "agarwood-rose",
-    nameEn: "ROSE · SCENTED AGARWOOD",
-    nameAr: "بخور العود المعطر بالورد",
-    subEn: "Scented Agarwood",
-    subAr: "عود مروكي معطر",
-    priceEn: "LE 5,860.40",
-    priceAr: "5,860.40 ج.م",
-    priceRaw: 5860.4,
-    image: "/products/agarwood-rose.png",
-    isSoldOut: false,
-  },
-  {
-    id: "agarwood-luban",
-    nameEn: "LUBAN · SCENTED AGARWOOD",
-    nameAr: "بخور العود المعطر باللبان",
-    subEn: "Scented Agarwood",
-    subAr: "لبان حوجري ملكي وعود",
-    priceEn: "LE 5,860.40",
-    priceAr: "5,860.40 ج.م",
-    priceRaw: 5860.4,
-    image: "/products/agarwood-luban.png",
-    isSoldOut: false,
-  },
-  {
-    id: "agarwood-anbar",
-    nameEn: "ANBAR · SCENTED AGARWOOD",
-    nameAr: "بخور العود المعطر بالعنبر",
-    subEn: "Scented Agarwood",
-    subAr: "عنبر ملكي وعود معتق",
-    priceEn: "LE 5,860.40",
-    priceAr: "5,860.40 ج.م",
-    priceRaw: 5860.4,
-    image: "/products/agarwood-anbar.png",
-    isSoldOut: true,
-  },
-];
-
 export const BukhoorShowcase: React.FC = React.memo(() => {
   const router = useRouter();
   const { locale, direction } = useLanguage();
   const isAr = locale === "ar";
+  const { cmsData } = useCMS();
+  const bukhoorConfig = cmsData.bukhoorSection || DEFAULT_BUKHOOR_SECTION;
   const { addToCart, addToWishlist, removeFromWishlist } = useCartActions();
   const { wishlistItems } = useWishlist();
+
+  const bukhoorItems: CMSBukhoorItem[] =
+    bukhoorConfig.items && bukhoorConfig.items.length > 0
+      ? bukhoorConfig.items
+      : DEFAULT_BUKHOOR_ITEMS;
 
   const [addedIds, setAddedIds] = useState<Record<string, boolean>>({});
   const [animatingIds, setAnimatingIds] = useState<Record<string, boolean>>({});
@@ -232,7 +189,7 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
     router.push(`/product/${id}`);
   };
 
-  const toggleWishlist = (item: BukhoorItem, e: React.MouseEvent) => {
+  const toggleWishlist = (item: CMSBukhoorItem, e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     const isWishlisted = wishlistItems.some((w) => w.id === item.id);
@@ -248,7 +205,7 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
     }
   };
 
-  const handleAdd = (item: BukhoorItem, e: React.MouseEvent) => {
+  const handleAdd = (item: CMSBukhoorItem, e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     if (dragState.current.hasMoved || touchState.current.hasMoved || item.isSoldOut) return;
@@ -273,12 +230,31 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
     }, 1800);
   };
 
+  if (bukhoorConfig.isEnabled === false) {
+    return null;
+  }
+
+  const bannerImgSrc = bukhoorConfig.bannerImage || "/highlights/bukhoor-banner.jpg";
+  const bannerHeadline = isAr
+    ? (bukhoorConfig.bannerHeadlineAr || "حضورٌ مهيب. فخامة متناهية. أصالة خالدة.")
+    : (bukhoorConfig.bannerHeadlineEn || "Commanding. Refined. Timeless.");
+  const bannerSubtitle = isAr
+    ? (bukhoorConfig.bannerSubtitleAr || "تعبيرٌ راقٍ عن نقاء العود الطبيعي المعطر — صُمم ليعيد صياغة المكان، والهيبة، والطقوس الفاخرة.")
+    : (bukhoorConfig.bannerSubtitleEn || "An elevated expression of pure oud — crafted to define space, presence, and ritual.");
+
+  const sectionTitle = isAr
+    ? (bukhoorConfig.titleAr || "حضورٌ يُعيد صياغة المكان")
+    : (bukhoorConfig.titleEn || "PRESENCE, REDEFINED.");
+  const sectionSubtitle = isAr
+    ? (bukhoorConfig.subtitleAr || "أرقى تشكيلات العود المعطر الطبيعي لتجربة استثنائية تأسر الحواس.")
+    : (bukhoorConfig.subtitleEn || "An elevated expression of pure oud — crafted to define space, presence, and ritual.");
+
   return (
     <section className={styles.section} id="bukhoor">
       {/* 1. Atmospheric Cinematic Mood Banner */}
       <div className={styles.bannerWrapper}>
         <Image
-          src="/highlights/bukhoor-banner.jpg"
+          src={bannerImgSrc}
           alt={isAr ? "بخور وعود جوفينيل الفاخر" : "JUVENILE Scented Agarwood"}
           fill
           priority
@@ -289,14 +265,10 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
 
         <div className={styles.bannerContent}>
           <h2 className={styles.bannerHeadline}>
-            {isAr
-              ? "حضورٌ مهيب. فخامة متناهية. أصالة خالدة."
-              : "Commanding. Refined. Timeless."}
+            {bannerHeadline}
           </h2>
           <p className={styles.bannerSubtitle}>
-            {isAr
-              ? "تعبيرٌ راقٍ عن نقاء العود الطبيعي المعطر — صُمم ليعيد صياغة المكان، والهيبة، والطقوس الفاخرة."
-              : "An elevated expression of pure oud — crafted to define space, presence, and ritual."}
+            {bannerSubtitle}
           </p>
         </div>
       </div>
@@ -306,12 +278,10 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
         {/* Header */}
         <div className={styles.header}>
           <h2 className={styles.title}>
-            {isAr ? "حضورٌ يُعيد صياغة المكان" : "PRESENCE, REDEFINED."}
+            {sectionTitle}
           </h2>
           <p className={styles.subtitle}>
-            {isAr
-              ? "أرقى تشكيلات العود المعطر الطبيعي لتجربة استثنائية تأسر الحواس."
-              : "An elevated expression of pure oud — crafted to define space, presence, and ritual."}
+            {sectionSubtitle}
           </p>
         </div>
 
@@ -345,7 +315,7 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {BUKHOOR_COLLECTION.map((item) => {
+            {bukhoorItems.map((item) => {
               const isWishlisted = wishlistItems.some((w) => w.id === item.id);
               const isAdded = addedIds[item.id];
               const isAnimating = animatingIds[item.id];

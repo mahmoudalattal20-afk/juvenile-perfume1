@@ -139,13 +139,22 @@ export function CategoryPageClient({ slug }: Props) {
     }
   };
 
+  const isBukhoorCustom = slug === "bukhoor" && cmsData?.bukhoorSection;
+  const bannerImage = isBukhoorCustom && cmsData.bukhoorSection?.bannerImage ? cmsData.bukhoorSection.bannerImage : category.image;
+  const categoryTitle = isBukhoorCustom && (isAr ? cmsData.bukhoorSection?.titleAr : cmsData.bukhoorSection?.titleEn)
+    ? (isAr ? cmsData.bukhoorSection?.titleAr! : cmsData.bukhoorSection?.titleEn!)
+    : (isAr ? category.titleAr : category.titleEn);
+  const categorySubtitle = isBukhoorCustom && (isAr ? cmsData.bukhoorSection?.subtitleAr : cmsData.bukhoorSection?.subtitleEn)
+    ? (isAr ? cmsData.bukhoorSection?.subtitleAr! : cmsData.bukhoorSection?.subtitleEn!)
+    : (isAr ? category.subtitleAr : category.subtitleEn);
+
   return (
     <div className={styles.mainWrapper}>
       {/* 1. Cinematic Luxury Banner */}
       <section className={styles.heroBanner}>
         <div className={styles.bannerBgWrapper}>
           <Image
-            src={category.image}
+            src={bannerImage}
             alt={isAr ? category.titleAr : category.titleEn}
             fill
             priority
@@ -172,11 +181,11 @@ export function CategoryPageClient({ slug }: Props) {
           </span>
 
           <h1 className={styles.title}>
-            {isAr ? category.titleAr : category.titleEn}
+            {categoryTitle}
           </h1>
 
           <p className={styles.subtitle}>
-            {isAr ? category.subtitleAr : category.subtitleEn}
+            {categorySubtitle}
           </p>
 
           {/* Quick Category Switcher */}
