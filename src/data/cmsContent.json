@@ -1579,6 +1579,159 @@
           "en": "Grasse — Paris, France"
         }
       }
+    },
+    "agarwood-rose": {
+      "id": "agarwood-rose",
+      "name": "ROSE · SCENTED AGARWOOD",
+      "arabicName": "بخور العود المعطر بالورد",
+      "category": {
+        "ar": "بخور فاخر",
+        "en": "Luxury Bukhoor"
+      },
+      "classification": "bukhoor",
+      "concentration": {
+        "ar": "عود مروكي طبيعي معطر",
+        "en": "Natural Scented Agarwood"
+      },
+      "tagline": {
+        "ar": "عود مروكي معطر",
+        "en": "Scented Agarwood"
+      },
+      "description": {
+        "ar": "بخور عود طبيعي معطر بالورد الجوري والزيوت الشرقية الفاخرة — صُمم ليعيد صياغة المكان والهيبة والطقوس الفاخرة.",
+        "en": "Natural agarwood scented with Taif rose and precious oriental oils — crafted to define space, presence, and ritual."
+      },
+      "price": 5860.4,
+      "formattedPrice": {
+        "ar": "5,860.40 ج.م",
+        "en": "5,860.40 LE"
+      },
+      "price50ml": 3200,
+      "formattedPrice50ml": {
+        "ar": "3,200 ج.م",
+        "en": "3,200 LE"
+      },
+      "image": "/products/agarwood-rose.png",
+      "gallery": [
+        "/products/agarwood-rose.png"
+      ],
+      "rating": 5.0,
+      "reviewsCount": 84,
+      "isSoldOut": false,
+      "pyramid": {
+        "topNotes": { "ar": "", "en": "" },
+        "heartNotes": { "ar": "", "en": "" },
+        "baseNotes": { "ar": "", "en": "" }
+      },
+      "specs": {
+        "longevity": { "ar": "فوحان ملكي يدوم طويلاً", "en": "Long-Lasting Royalty" },
+        "sillage": { "ar": "انتشار بخوري كثيف وفاخر", "en": "Rich Scented Smoke" },
+        "gender": { "ar": "للجنسين ولكافة المجالس", "en": "Unisex" },
+        "season": { "ar": "المناسبات والطقوس اليومية", "en": "All Occasions" },
+        "origin": { "ar": "عود طبيعي معطر", "en": "Natural Scented Agarwood" }
+      }
+    },
+    "agarwood-luban": {
+      "id": "agarwood-luban",
+      "name": "LUBAN · SCENTED AGARWOOD",
+      "arabicName": "بخور العود المعطر باللبان",
+      "category": {
+        "ar": "بخور فاخر",
+        "en": "Luxury Bukhoor"
+      },
+      "classification": "bukhoor",
+      "concentration": {
+        "ar": "لبان حوجري ملكي وعود معتق",
+        "en": "Royal Hojari & Agarwood"
+      },
+      "tagline": {
+        "ar": "لبان حوجري ملكي وعود",
+        "en": "Scented Agarwood"
+      },
+      "description": {
+        "ar": "بخور عود معطر باللبان الحوجري العماني الملكي وخلاصة العود المعتق لتنقية الأجواء وبث السكينة والفخامة.",
+        "en": "Precious agarwood scented with royal Omani Hojari frankincense and aged oud extracts."
+      },
+      "price": 5860.4,
+      "formattedPrice": {
+        "ar": "5,860.40 ج.م",
+        "en": "5,860.40 LE"
+      },
+      "price50ml": 3200,
+      "formattedPrice50ml": {
+        "ar": "3,200 ج.م",
+        "en": "3,200 LE"
+      },
+      "image": "/products/agarwood-luban.png",
+      "gallery": [
+        "/products/agarwood-luban.png"
+      ],
+      "rating": 4.9,
+      "reviewsCount": 62,
+      "isSoldOut": false,
+      "pyramid": {
+        "topNotes": { "ar": "", "en": "" },
+        "heartNotes": { "ar": "", "en": "" },
+        "baseNotes": { "ar": "", "en": "" }
+      },
+      "specs": {
+        "longevity": { "ar": "ثبات هائل وانتشار نقي", "en": "Phenomenal Pure Sillage" },
+        "sillage": { "ar": "عبق بخوري منعش ومهيب", "en": "Elevated Smoky Aroma" },
+        "gender": { "ar": "للجنسين وللمجالس الفاخرة", "en": "Unisex" },
+        "season": { "ar": "كافة الفصول والمناسبات", "en": "All Seasons" },
+        "origin": { "ar": "لبان حوجري وعود طبيعي", "en": "Natural Hojari & Agarwood" }
+      }
+    },
+    "agarwood-anbar": {
+      "id": "agarwood-anbar",
+      "name": "ANBAR · SCENTED AGARWOOD",
+      "arabicName": "بخور العود المعطر بالعنبر",
+      "category": {
+        "ar": "بخور فاخر",
+        "en": "Luxury Bukhoor"
+      },
+      "classification": "bukhoor",
+      "concentration": {
+        "ar": "عنبر ملكي وعود معتق",
+        "en": "Royal Amber & Aged Agarwood"
+      },
+      "tagline": {
+        "ar": "عنبر ملكي وعود معتق",
+        "en": "Scented Agarwood"
+      },
+      "description": {
+        "ar": "بخور عود معطر بالعنبر الملكي الدافئ واللمسات الشرقية الأصيلة لتجربة عطرية لا تُنسى.",
+        "en": "Exquisite agarwood infused with royal warm amber and authentic oriental notes."
+      },
+      "price": 5860.4,
+      "formattedPrice": {
+        "ar": "5,860.40 ج.م",
+        "en": "5,860.40 LE"
+      },
+      "price50ml": 3200,
+      "formattedPrice50ml": {
+        "ar": "3,200 ج.م",
+        "en": "3,200 LE"
+      },
+      "image": "/products/agarwood-anbar.png",
+      "gallery": [
+        "/products/agarwood-anbar.png"
+      ],
+      "rating": 5.0,
+      "reviewsCount": 97,
+      "isSoldOut": true,
+      "pyramid": {
+        "topNotes": { "ar": "", "en": "" },
+        "heartNotes": { "ar": "", "en": "" },
+        "baseNotes": { "ar": "", "en": "" }
+      },
+      "specs": {
+        "longevity": { "ar": "ثبات عميق وفاخر", "en": "Deep Lasting Aura" },
+        "sillage": { "ar": "فوحان دافئ وغني", "en": "Warm Amber Sillage" },
+        "gender": { "ar": "للجنسين", "en": "Unisex" },
+        "season": { "ar": "المساء والمناسبات الراقية", "en": "Evening & Grand Occasions" },
+        "origin": { "ar": "عنبر وعود طبيعي", "en": "Royal Amber & Agarwood" }
+      }
     }
   },
   "inspiredProducts": {

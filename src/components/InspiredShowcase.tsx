@@ -495,24 +495,23 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
                           type="button"
                           onClick={(e) => handleSizeSelect(item.id, "50ml", e)}
                           className={`${styles.sizeBtn} ${currentSize === "50ml" ? styles.sizeBtnActive : ""}`}
+                          aria-label={isAr ? `اختيار حجم 50 مل (${price50} ج.م)` : `Select 50ml (${price50} LE)`}
                         >
                           <span className={styles.sizeVol}>{isAr ? "50 مل" : "50ml"}</span>
-                          <span className={styles.sizePrice}>({price50} {isAr ? "ج.م" : "LE"})</span>
                         </button>
                         <button
                           type="button"
                           onClick={(e) => handleSizeSelect(item.id, "100ml", e)}
                           className={`${styles.sizeBtn} ${currentSize === "100ml" ? styles.sizeBtnActive : ""}`}
+                          aria-label={isAr ? `اختيار حجم 100 مل (${price100} ج.م)` : `Select 100ml (${price100} LE)`}
                         >
                           <span className={styles.sizeVol}>{isAr ? "100 مل" : "100ml"}</span>
-                          <span className={styles.sizePrice}>({price100} {isAr ? "ج.م" : "LE"})</span>
                         </button>
                       </div>
 
                       {/* Action Row */}
                       <div className={styles.actionRow}>
                         <div className={styles.priceCol}>
-                          <span className={styles.priceLabel}>{isAr ? "السعر" : "Price"}</span>
                           <span
                             key={`${item.id}-${currentSize}`}
                             className={`${styles.currentPrice} ${styles.priceAnimate}`}
@@ -534,8 +533,8 @@ export const InspiredShowcase: React.FC<InspiredShowcaseProps> = React.memo(
                             </span>
                           ) : (
                             <span className={styles.btnContent}>
-                              <span className={styles.btnText}>{isAr ? "إضافة للسلة" : "Add to Cart"}</span>
-                              <ShoppingBag size={13.5} strokeWidth={1.8} className={styles.btnIcon} />
+                              <span className={styles.btnText}>{isAr ? "إضافة" : "Add"}</span>
+                              <ShoppingBag size={12.5} strokeWidth={1.8} className={styles.btnIcon} />
                             </span>
                           )}
                         </button>

@@ -74,6 +74,7 @@ import {
   CMSBukhoorSection,
   DEFAULT_BUKHOOR_ITEMS,
   DEFAULT_BUKHOOR_SECTION,
+  DEFAULT_BUKHOOR_FEATURED_IDS,
   DEFAULT_FEATURED_PRODUCT_IDS,
   DEFAULT_FEATURED_INSPIRED_PRODUCT_IDS,
 } from "@/lib/cmsTypes";
@@ -1313,6 +1314,34 @@ export default function FinexyAdminDashboard() {
     setDraftData(nextDraft);
     await updateCMS(nextDraft);
     triggerToast("👑 تمت استعادة العطور الملكية فقط في اختياراتنا المميزة بنجاح!");
+  };
+
+  const toggleFeaturedBukhoorProduct = async (productId: string) => {
+    const current = draftData.featuredBukhoorProductIds || draftData.bukhoorSection?.featuredProductIds || DEFAULT_BUKHOOR_FEATURED_IDS;
+    const isCurrentlyFeatured = current.includes(productId);
+    const updated = isCurrentlyFeatured
+      ? current.filter((id) => id !== productId)
+      : [...current, productId];
+
+    const nextDraft: SiteCMSData = {
+      ...draftData,
+      featuredBukhoorProductIds: updated,
+      bukhoorSection: {
+        ...(draftData.bukhoorSection || {
+          title: { ar: "مجموعة البخور الملكي الفاخر", en: "Royal Scented Bukhoor & Agarwood Collection" },
+          subtitle: { ar: "عود طبيعي معطر بتركيبة شرقية ساحرة وثبات ملكي لا يُنسى", en: "Natural scented agarwood infused with enchanting oriental oils." },
+          items: [],
+        }),
+        featuredProductIds: updated,
+      },
+    };
+    setDraftData(nextDraft);
+    await updateCMS(nextDraft);
+    triggerToast(
+      isCurrentlyFeatured
+        ? "تمت إزالة البخور من سيكشن البخور بالصفحة الرئيسية"
+        : "✓ تمت إضافة البخور إلى سيكشن البخور بالصفحة الرئيسية وحفظ التعديل فوراً"
+    );
   };
 
   const toggleFeaturedInspiredProduct = async (inspiredId: string) => {
@@ -3675,50 +3704,97 @@ export default function FinexyAdminDashboard() {
                           </div>
                         )}
 
-                        {(() => {
-                          const isFeatured = (draftData.featuredProductIds || DEFAULT_FEATURED_PRODUCT_IDS).includes(id);
-                          return (
-                            <button
-                              type="button"
-                              onClick={() => toggleFeaturedProduct(id)}
-                              style={{
-                                width: "100%",
-                                marginBottom: 10,
-                                padding: "7px 12px",
-                                borderRadius: 10,
-                                border: isFeatured ? "1.5px solid #10b981" : "1px dashed #cbd5e1",
-                                background: isFeatured ? "#ecfdf5" : "#ffffff",
-                                color: isFeatured ? "#047857" : "#64748b",
-                                fontSize: 12,
-                                fontWeight: 700,
-                                cursor: "pointer",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                                gap: 6,
-                                transition: "all 0.18s ease",
-                              }}
-                              title={isFeatured ? "معروض الآن في اختياراتنا المميزة (اضغط للإزالة)" : "اضغط لإضافته لقسم اختياراتنا المميزة"}
-                            >
-                              <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                                <Star size={13} fill={isFeatured ? "#10b981" : "none"} color={isFeatured ? "#10b981" : "#94a3b8"} />
-                                <span>{isFeatured ? "معروض في اختياراتنا المميزة" : "إضافة إلى المميزة"}</span>
-                              </span>
-                              <span
+                        {cls === "bukhoor" ? (
+                          (() => {
+                            const isBukhoorFeatured = (draftData.featuredBukhoorProductIds || draftData.bukhoorSection?.featuredProductIds || DEFAULT_BUKHOOR_FEATURED_IDS).includes(id);
+                            return (
+                              <button
+                                type="button"
+                                onClick={() => toggleFeaturedBukhoorProduct(id)}
                                 style={{
-                                  fontSize: 10.5,
-                                  padding: "2px 7px",
-                                  borderRadius: 6,
-                                  background: isFeatured ? "#10b981" : "#e2e8f0",
-                                  color: isFeatured ? "#ffffff" : "#475569",
+                                  width: "100%",
+                                  marginBottom: 10,
+                                  padding: "7px 12px",
+                                  borderRadius: 10,
+                                  border: isBukhoorFeatured ? "1.5px solid #d97706" : "1px dashed #cbd5e1",
+                                  background: isBukhoorFeatured ? "#fef3c7" : "#ffffff",
+                                  color: isBukhoorFeatured ? "#b45309" : "#64748b",
+                                  fontSize: 12,
                                   fontWeight: 700,
+                                  cursor: "pointer",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "space-between",
+                                  gap: 6,
+                                  transition: "all 0.18s ease",
                                 }}
+                                title={isBukhoorFeatured ? "معروض في سكشن البخور بالصفحة الرئيسية (اضغط للإزالة)" : "اضغط لإضافته لسيكشن البخور بالصفحة الرئيسية"}
                               >
-                                {isFeatured ? "✓ معروض" : "+ أضف"}
-                              </span>
-                            </button>
-                          );
-                        })()}
+                                <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                                  <Sparkles size={13} color={isBukhoorFeatured ? "#d97706" : "#94a3b8"} />
+                                  <span>{isBukhoorFeatured ? "معروض في سكشن البخور بالرئيسية" : "إضافة لسكشن البخور بالرئيسية"}</span>
+                                </span>
+                                <span
+                                  style={{
+                                    fontSize: 10.5,
+                                    padding: "2px 7px",
+                                    borderRadius: 6,
+                                    background: isBukhoorFeatured ? "#d97706" : "#e2e8f0",
+                                    color: isBukhoorFeatured ? "#ffffff" : "#475569",
+                                    fontWeight: 700,
+                                  }}
+                                >
+                                  {isBukhoorFeatured ? "✓ معروض بالسيكشن" : "+ غير معروض"}
+                                </span>
+                              </button>
+                            );
+                          })()
+                        ) : (
+                          (() => {
+                            const isFeatured = (draftData.featuredProductIds || DEFAULT_FEATURED_PRODUCT_IDS).includes(id);
+                            return (
+                              <button
+                                type="button"
+                                onClick={() => toggleFeaturedProduct(id)}
+                                style={{
+                                  width: "100%",
+                                  marginBottom: 10,
+                                  padding: "7px 12px",
+                                  borderRadius: 10,
+                                  border: isFeatured ? "1.5px solid #10b981" : "1px dashed #cbd5e1",
+                                  background: isFeatured ? "#ecfdf5" : "#ffffff",
+                                  color: isFeatured ? "#047857" : "#64748b",
+                                  fontSize: 12,
+                                  fontWeight: 700,
+                                  cursor: "pointer",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "space-between",
+                                  gap: 6,
+                                  transition: "all 0.18s ease",
+                                }}
+                                title={isFeatured ? "معروض الآن في اختياراتنا المميزة (اضغط للإزالة)" : "اضغط لإضافته لقسم اختياراتنا المميزة"}
+                              >
+                                <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                                  <Star size={13} fill={isFeatured ? "#10b981" : "none"} color={isFeatured ? "#10b981" : "#94a3b8"} />
+                                  <span>{isFeatured ? "معروض في اختياراتنا المميزة" : "إضافة إلى المميزة"}</span>
+                                </span>
+                                <span
+                                  style={{
+                                    fontSize: 10.5,
+                                    padding: "2px 7px",
+                                    borderRadius: 6,
+                                    background: isFeatured ? "#10b981" : "#e2e8f0",
+                                    color: isFeatured ? "#ffffff" : "#475569",
+                                    fontWeight: 700,
+                                  }}
+                                >
+                                  {isFeatured ? "✓ معروض" : "+ أضف"}
+                                </span>
+                              </button>
+                            );
+                          })()
+                        )}
 
                         <div style={{ display: "flex", gap: 8, marginTop: "auto", alignItems: "center" }}>
                           <button
@@ -5612,280 +5688,32 @@ export default function FinexyAdminDashboard() {
                   </div>
                 </div>
 
-                {/* 4. Bukhoor Products Collection Manager */}
-                <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 16, padding: 18 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 10 }}>
-                    <div>
-                      <h4 style={{ margin: 0, fontSize: 15, fontWeight: 700, color: "#0f172a", display: "flex", alignItems: "center", gap: 6 }}>
-                        <ShoppingBag size={17} color="#b45309" /> منتجات معرض البخور ({(draftData.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS).length} منتج)
-                      </h4>
-                      <p style={{ margin: "2px 0 0", fontSize: 12, color: "#64748b" }}>
-                        يمكنك إضافة منتجات جديدة، رفع صور الزجاجات، تعديل الأسماء والأسعار وحالة التوفر (نفدت الكمية).
-                      </p>
+                {/* 4. Unified Bukhoor Products Catalog Notice */}
+                <div style={{ background: "#f8fafc", border: "1px dashed #cbd5e1", borderRadius: 16, padding: 18, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 12, background: "#fef3c7", color: "#b45309", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <Sparkles size={20} />
                     </div>
-
-                    <button
-                      type="button"
-                      className={styles.publishActionBtn}
-                      onClick={() => {
-                        const currentItems = [...(draftData.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                        const newId = `bukhoor-${Date.now()}`;
-                        const newItem: CMSBukhoorItem = {
-                          id: newId,
-                          nameAr: "بخور جديد",
-                          nameEn: "NEW BUKHOOR",
-                          subAr: "عود مروكي معطر",
-                          subEn: "Scented Agarwood",
-                          priceRaw: 5860.4,
-                          priceAr: "5,860.40 ج.م",
-                          priceEn: "LE 5,860.40",
-                          image: "/products/agarwood-rose.png",
-                          isSoldOut: false,
-                        };
-                        updateDraft((prev) => ({
-                          ...prev,
-                          bukhoorSection: {
-                            ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION),
-                            items: [...currentItems, newItem],
-                          },
-                        }));
-                        triggerToast("✓ تم إضافة منتج بخور جديد!");
-                      }}
-                    >
-                      <Plus size={16} /> إضافة منتج بخور جديد
-                    </button>
-                  </div>
-
-                  {/* Grid of Bukhoor Products */}
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 16 }}>
-                    {(draftData.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS).map((item, idx) => (
-                      <div
-                        key={item.id || idx}
-                        style={{
-                          background: "#ffffff",
-                          borderRadius: 16,
-                          padding: 16,
-                          border: "1px solid #e2e8f0",
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 12,
-                        }}
-                      >
-                        {/* Top row: Index & Delete */}
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <span style={{ fontSize: 13, fontWeight: 700, color: "#0f172a" }}>
-                            #{idx + 1} {item.nameAr}
-                          </span>
-                          {(draftData.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS).length > 1 && (
-                            <button
-                              type="button"
-                              style={{
-                                background: "#fef2f2",
-                                border: "1px solid #fee2e2",
-                                color: "#dc2626",
-                                fontSize: 11.5,
-                                fontWeight: 600,
-                                padding: "4px 8px",
-                                borderRadius: 8,
-                                cursor: "pointer",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 4,
-                              }}
-                              onClick={() => {
-                                updateDraft((prev) => {
-                                  const currentItems = [...(prev.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                                  return {
-                                    ...prev,
-                                    bukhoorSection: {
-                                      ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION),
-                                      items: currentItems.filter((_, i) => i !== idx),
-                                    },
-                                  };
-                                });
-                                triggerToast(`✓ تم حذف المنتج #${idx + 1}`);
-                              }}
-                            >
-                              <Trash2 size={12} /> حذف
-                            </button>
-                          )}
-                        </div>
-
-                        {/* Image Preview & Upload */}
-                        <div style={{ display: "flex", gap: 12, alignItems: "center", background: "#f8fafc", padding: 10, borderRadius: 12, border: "1px solid #edf0f5" }}>
-                          <div style={{ position: "relative", width: 64, height: 64, borderRadius: 8, overflow: "hidden", background: "#ffffff", border: "1px solid #cbd5e1", flexShrink: 0 }}>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={item.image}
-                              alt={item.nameAr}
-                              style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).src = "/products/agarwood-rose.png";
-                              }}
-                            />
-                            {uploadingBukhoorItemIdx === idx && (
-                              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.6)", color: "#ffffff", fontSize: 9, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-                                رفع...
-                              </div>
-                            )}
-                          </div>
-
-                          <div style={{ flex: 1 }}>
-                            <label className={styles.directUploadBtn} style={{ fontSize: 11, padding: "5px 10px" }}>
-                              <Upload size={12} />
-                              <span>{uploadingBukhoorItemIdx === idx ? "جارِ الرفع..." : "تغيير الصورة"}</span>
-                              <input
-                                type="file"
-                                accept="image/*"
-                                style={{ display: "none" }}
-                                disabled={uploadingBukhoorItemIdx === idx}
-                                onChange={(e) => {
-                                  const file = e.target.files?.[0];
-                                  if (file) {
-                                    handleUploadBukhoorItemImage(idx, file);
-                                  }
-                                }}
-                              />
-                            </label>
-                          </div>
-                        </div>
-
-                        {/* Names */}
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                          <div className={styles.formGroup}>
-                            <label className={styles.label} style={{ fontSize: 11 }}>اسم المنتج (عربي):</label>
-                            <input
-                              type="text"
-                              className={styles.cleanInput}
-                              value={item.nameAr}
-                              onChange={(e) => {
-                                const val = e.target.value;
-                                updateDraft((prev) => {
-                                  const list = [...(prev.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                                  list[idx] = { ...list[idx], nameAr: val };
-                                  return {
-                                    ...prev,
-                                    bukhoorSection: { ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION), items: list },
-                                  };
-                                });
-                              }}
-                            />
-                          </div>
-
-                          <div className={styles.formGroup}>
-                            <label className={styles.label} style={{ fontSize: 11 }}>اسم المنتج (إنجليزي):</label>
-                            <input
-                              type="text"
-                              className={styles.cleanInput}
-                              value={item.nameEn}
-                              onChange={(e) => {
-                                const val = e.target.value;
-                                updateDraft((prev) => {
-                                  const list = [...(prev.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                                  list[idx] = { ...list[idx], nameEn: val };
-                                  return {
-                                    ...prev,
-                                    bukhoorSection: { ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION), items: list },
-                                  };
-                                });
-                              }}
-                            />
-                          </div>
-                        </div>
-
-                        {/* Subtitles */}
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                          <div className={styles.formGroup}>
-                            <label className={styles.label} style={{ fontSize: 11 }}>النوع/التصنيف (عربي):</label>
-                            <input
-                              type="text"
-                              className={styles.cleanInput}
-                              value={item.subAr}
-                              onChange={(e) => {
-                                const val = e.target.value;
-                                updateDraft((prev) => {
-                                  const list = [...(prev.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                                  list[idx] = { ...list[idx], subAr: val };
-                                  return {
-                                    ...prev,
-                                    bukhoorSection: { ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION), items: list },
-                                  };
-                                });
-                              }}
-                            />
-                          </div>
-
-                          <div className={styles.formGroup}>
-                            <label className={styles.label} style={{ fontSize: 11 }}>النوع/التصنيف (إنجليزي):</label>
-                            <input
-                              type="text"
-                              className={styles.cleanInput}
-                              value={item.subEn}
-                              onChange={(e) => {
-                                const val = e.target.value;
-                                updateDraft((prev) => {
-                                  const list = [...(prev.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                                  list[idx] = { ...list[idx], subEn: val };
-                                  return {
-                                    ...prev,
-                                    bukhoorSection: { ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION), items: list },
-                                  };
-                                });
-                              }}
-                            />
-                          </div>
-                        </div>
-
-                        {/* Price and Stock Toggle */}
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, alignItems: "center" }}>
-                          <div className={styles.formGroup}>
-                            <label className={styles.label} style={{ fontSize: 11 }}>السعر (ج.م):</label>
-                            <input
-                              type="number"
-                              className={styles.cleanInput}
-                              value={item.priceRaw}
-                              onChange={(e) => {
-                                const num = parseFloat(e.target.value) || 0;
-                                updateDraft((prev) => {
-                                  const list = [...(prev.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                                  list[idx] = {
-                                    ...list[idx],
-                                    priceRaw: num,
-                                    priceAr: `${num.toLocaleString("ar-EG", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ج.م`,
-                                    priceEn: `LE ${num.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-                                  };
-                                  return {
-                                    ...prev,
-                                    bukhoorSection: { ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION), items: list },
-                                  };
-                                });
-                              }}
-                            />
-                          </div>
-
-                          <label style={{ display: "flex", alignItems: "center", gap: 6, cursor: "pointer", fontSize: 12, fontWeight: 600, marginTop: 16 }}>
-                            <input
-                              type="checkbox"
-                              checked={item.isSoldOut === true}
-                              onChange={(e) => {
-                                const checked = e.target.checked;
-                                updateDraft((prev) => {
-                                  const list = [...(prev.bukhoorSection?.items || DEFAULT_BUKHOOR_ITEMS)];
-                                  list[idx] = { ...list[idx], isSoldOut: checked };
-                                  return {
-                                    ...prev,
-                                    bukhoorSection: { ...(prev.bukhoorSection || DEFAULT_BUKHOOR_SECTION), items: list },
-                                  };
-                                });
-                              }}
-                            />
-                            <span style={{ color: item.isSoldOut ? "#dc2626" : "#475569" }}>نفدت الكمية</span>
-                          </label>
-                        </div>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "#0f172a" }}>
+                        إدارة منتجات البخور والمبثوث
                       </div>
-                    ))}
+                      <div style={{ fontSize: 12, color: "#64748b", marginTop: 2 }}>
+                        تم توحيد إدارة منتجات البخور بالكامل داخل تبويب <strong>&quot;العطور والأسعار&quot;</strong> — قسم <strong>&quot;بخور ومبثوث&quot;</strong> مع إمكانية تحديد ظهور كل منتج في سكشن الصفحة الرئيسية مباشرة من كارت المنتج أو شاشة التعديل.
+                      </div>
+                    </div>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("products");
+                      setSelectedCategoryFilter("bukhoor");
+                    }}
+                    className={styles.publishActionBtn}
+                    style={{ fontSize: 12.5, padding: "8px 16px" }}
+                  >
+                    <span>الانتقال لكتالوج البخور 👈</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -6135,6 +5963,69 @@ export default function FinexyAdminDashboard() {
 
               <div className={styles.formGroup}>
                 {(() => {
+                  const currentCls = editingProductDraft.classification || getProductClassification(editingProductDraft);
+                  if (currentCls === "bukhoor") {
+                    const isBukhoorFeatured = (draftData.featuredBukhoorProductIds || draftData.bukhoorSection?.featuredProductIds || DEFAULT_BUKHOOR_FEATURED_IDS).includes(editingProductId);
+                    return (
+                      <div
+                        onClick={() => toggleFeaturedBukhoorProduct(editingProductId)}
+                        style={{
+                          padding: "14px 18px",
+                          borderRadius: 14,
+                          border: isBukhoorFeatured ? "1.5px solid #d97706" : "1.5px solid #e2e8f0",
+                          background: isBukhoorFeatured ? "#fffbeb" : "#f8fafc",
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          gap: 12,
+                          transition: "all 0.2s ease",
+                        }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                          <div
+                            style={{
+                              width: 36,
+                              height: 36,
+                              borderRadius: 10,
+                              background: isBukhoorFeatured ? "#d97706" : "#e2e8f0",
+                              color: isBukhoorFeatured ? "#ffffff" : "#64748b",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              flexShrink: 0,
+                            }}
+                          >
+                            <Sparkles size={18} />
+                          </div>
+                          <div>
+                            <div style={{ fontSize: 13.5, fontWeight: 700, color: isBukhoorFeatured ? "#92400e" : "#1e293b" }}>
+                              الظهور في سكشن البخور الملكي بالصفحة الرئيسية
+                            </div>
+                            <div style={{ fontSize: 12, color: "#64748b", marginTop: 2 }}>
+                              {isBukhoorFeatured
+                                ? "منتج البخور هذا معروض حالياً في سكشن البخور بالصفحة الرئيسية (انقر للاستبعاد)"
+                                : "اضغط هنا لتضمين هذا البخور وإظهاره في سكشن البخور بالصفحة الرئيسية"}
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            padding: "6px 14px",
+                            borderRadius: 20,
+                            fontSize: 12,
+                            fontWeight: 700,
+                            background: isBukhoorFeatured ? "#d97706" : "#cbd5e1",
+                            color: isBukhoorFeatured ? "#ffffff" : "#475569",
+                            flexShrink: 0,
+                          }}
+                        >
+                          {isBukhoorFeatured ? "✓ معروض بالسيكشن" : "+ غير معروض"}
+                        </div>
+                      </div>
+                    );
+                  }
+
                   const isFeatured = (draftData.featuredProductIds || DEFAULT_FEATURED_PRODUCT_IDS).includes(editingProductId);
                   return (
                     <div

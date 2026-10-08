@@ -138,6 +138,7 @@ export interface CMSBukhoorSection {
   subtitleAr?: string;
   subtitleEn?: string;
   items?: CMSBukhoorItem[];
+  featuredProductIds?: string[];
 }
 
 export interface SiteCMSData {
@@ -165,11 +166,18 @@ export interface SiteCMSData {
   coupons?: Record<string, CMSCoupon>;
   muskPage?: CMSMuskPageConfig;
   featuredProductIds?: string[];
+  featuredBukhoorProductIds?: string[];
   featuredInspiredProductIds?: string[];
   deletedProducts?: string[];
   deletedInspiredProducts?: string[];
   lastUpdated: string;
 }
+
+export const DEFAULT_BUKHOOR_FEATURED_IDS: string[] = [
+  "agarwood-rose",
+  "agarwood-luban",
+  "agarwood-anbar",
+];
 
 export const DEFAULT_FEATURED_PRODUCT_IDS: string[] = [
   "crest-absolu",

@@ -467,10 +467,10 @@
 
 /* Product Name */
 .productName {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14.5px;
+  font-weight: 600;
   color: #0a0f1d;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   line-height: 1.35;
   min-height: 2.7em;
   display: flex;
@@ -479,14 +479,15 @@
 
 :global([dir="rtl"]) .productName {
   font-family: var(--font-readex), 'Readex Pro', sans-serif !important;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
 }
 
 :global([dir="ltr"]) .productName,
 :global([lang="en"]) .productName {
   font-family: var(--font-serif-luxury) !important;
-  font-size: 15px !important;
+  font-size: 14.5px !important;
   font-weight: 500 !important;
   letter-spacing: 0.015em;
   line-height: 1.32;
@@ -505,7 +506,7 @@
 }
 
 .sizeBtn {
-  padding: 6px 4px;
+  padding: 5px 8px;
   border-radius: 9999px;
   border: none;
   background: transparent;
@@ -518,18 +519,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   user-select: none;
 }
 
 .sizeVol {
   white-space: nowrap;
-}
-
-.sizePrice {
-  white-space: nowrap;
-  font-size: 0.92em;
-  opacity: 0.9;
 }
 
 .sizeBtn:active {
@@ -540,7 +534,7 @@
   background: #ffffff;
   color: #000000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 :global([dir="rtl"]) .sizeBtn,
@@ -551,7 +545,7 @@
 
 :global([dir="rtl"]) .sizeBtnActive,
 :global([lang="ar"]) .sizeBtnActive {
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
 /* Action Row */
@@ -559,9 +553,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 10px;
   border-top: 1px solid #f4f4f5;
 }
 
@@ -898,46 +892,48 @@
   }
 
   .productName {
-    font-size: 13.5px;
-    margin-bottom: 8px;
-    min-height: 2.6em;
+    font-size: 12.5px;
+    margin-bottom: 7px;
+    min-height: 2.5em;
+  }
+
+  :global([dir="rtl"]) .productName {
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    min-height: 2.5em;
   }
 
   :global([dir="ltr"]) .productName,
   :global([lang="en"]) .productName {
-    font-size: 12.8px !important;
-    min-height: 2.6em;
+    font-size: 12.5px !important;
+    min-height: 2.5em;
   }
 
   .sizeSwitcher {
     margin-bottom: 8px;
-    gap: 3px;
-    padding: 3px;
-    border-radius: 12px;
+    gap: 2px;
+    padding: 2px;
+    border-radius: 9999px;
   }
 
   .sizeBtn {
-    flex-direction: column;
-    padding: 4px 2px;
-    border-radius: 9px;
-    gap: 1px;
-    line-height: 1.15;
+    flex-direction: row;
+    padding: 3px 6px;
+    border-radius: 9999px;
+    gap: 0;
+    line-height: 1.1;
     text-align: center;
   }
 
   .sizeVol {
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 10.5px;
+    font-weight: 500;
     line-height: 1.1;
     white-space: nowrap;
   }
 
-  .sizePrice {
-    font-size: 9px;
-    font-weight: 400;
-    line-height: 1.1;
-    white-space: nowrap;
-    opacity: 0.8;
+  :global([dir="rtl"]) .sizeVol {
+    font-weight: 500 !important;
   }
 
   .actionRow {
@@ -952,21 +948,23 @@
   }
 
   .priceLabel {
-    font-size: 9px;
+    display: none;
   }
 
   .currentPrice {
     font-size: 13.5px;
+    font-weight: 700;
     white-space: nowrap;
     display: block;
     line-height: 1.2;
   }
 
   .addToCartBtn {
-    height: 32px;
+    height: 29px;
     padding: 0 10px;
-    font-size: 11px;
+    font-size: 10.5px;
     border-radius: 9999px;
+    border-width: 1.2px;
     flex-shrink: 1;
     min-width: 0;
   }

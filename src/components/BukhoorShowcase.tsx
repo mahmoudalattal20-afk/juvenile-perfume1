@@ -15,7 +15,13 @@ import {
 import { useLanguage } from "@/context/LanguageContext";
 import { useCartActions, useWishlist } from "@/context/CartContext";
 import { useCMS } from "@/context/CMSContext";
-import { DEFAULT_BUKHOOR_SECTION, DEFAULT_BUKHOOR_ITEMS, CMSBukhoorItem } from "@/lib/cmsTypes";
+import {
+  DEFAULT_BUKHOOR_SECTION,
+  DEFAULT_BUKHOOR_ITEMS,
+  DEFAULT_BUKHOOR_FEATURED_IDS,
+  CMSBukhoorItem,
+} from "@/lib/cmsTypes";
+import { PRODUCTS_CATALOG, getProductClassification } from "@/data/products";
 import styles from "./BukhoorShowcase.module.css";
 
 function toTitleCase(str: string): string {
@@ -34,10 +40,40 @@ export const BukhoorShowcase: React.FC = React.memo(() => {
   const { addToCart, addToWishlist, removeFromWishlist } = useCartActions();
   const { wishlistItems } = useWishlist();
 
-  const bukhoorItems: CMSBukhoorItem[] =
-    bukhoorConfig.items && bukhoorConfig.items.length > 0
+  const allProducts = { ...PRODUCTS_CATALOG, ...(cmsData.products || {}) };
+  const featuredIds =
+    cmsData.featuredBukhoorProductIds ||
+    cmsData.bukhoorSection?.featuredProductIds ||
+    DEFAULT_BUKHOOR_FEATURED_IDS;
+
+  const bukhoorItems: CMSBukhoorItem[] = React.useMemo(() => {
+    const matched: CMSBukhoorItem[] = [];
+    const featuredSet = new Set(featuredIds);
+
+    for (const [id, prod] of Object.entries(allProducts)) {
+      const cls = getProductClassification(prod);
+      if (cls === "bukhoor" && featuredSet.has(id)) {
+        matched.push({
+          id,
+          nameAr: prod.arabicName || prod.name,
+          nameEn: prod.name,
+          subAr: prod.tagline?.ar || "عود مروكي معطر",
+          subEn: prod.tagline?.en || "Scented Agarwood",
+          priceAr: prod.formattedPrice?.ar || `${prod.price.toLocaleString("ar-EG")} ج.م`,
+          priceEn: prod.formattedPrice?.en || `LE ${prod.price.toLocaleString("en-US")}`,
+          priceRaw: prod.price,
+          image: prod.image,
+          isSoldOut: prod.isSoldOut || false,
+        });
+      }
+    }
+
+    if (matched.length > 0) return matched;
+
+    return bukhoorConfig.items && bukhoorConfig.items.length > 0
       ? bukhoorConfig.items
       : DEFAULT_BUKHOOR_ITEMS;
+  }, [allProducts, featuredIds, bukhoorConfig.items]);
 
   const [addedIds, setAddedIds] = useState<Record<string, boolean>>({});
   const [animatingIds, setAnimatingIds] = useState<Record<string, boolean>>({});
